@@ -1,7 +1,7 @@
-package src.test3;
+package test3;
 
 public class Class {
- Hello(){
+ void Hello(){
 	 
  }
 }
