@@ -1,2 +1,0 @@
-serviceClass: com.agrarapp.client.GreetingService
-path: 9CD2CDD0DA9681847EF335245CD3D0BB.gwt.rpc
