@@ -34,7 +34,7 @@ public class AgrarAlpha_v1 implements EntryPoint {
 	 */
 	private final GreetingServiceAsync greetingService = GWT
 			.create(GreetingService.class);
-
+	
 	/**
 	 * This is the entry point method.
 	 */
@@ -43,7 +43,7 @@ public class AgrarAlpha_v1 implements EntryPoint {
 		final TextBox nameField = new TextBox();
 		nameField.setText("GWT User");
 		final Label errorLabel = new Label();
-
+		
 		// We can add style names to widgets
 		sendButton.addStyleName("sendButton");
 
@@ -144,9 +144,6 @@ public class AgrarAlpha_v1 implements EntryPoint {
 			}
 		}
 
-		// Add a handler to send the name to the server
-		MyHandler handler = new MyHandler();
-		sendButton.addClickHandler(handler);
-		nameField.addKeyUpHandler(handler);
+
 	}
 }
