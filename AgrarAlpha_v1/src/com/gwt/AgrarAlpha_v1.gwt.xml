@@ -8,7 +8,10 @@
 <module rename-to='agraralpha_v1'>
   <!-- Inherit the core Web Toolkit stuff.                        -->
   <inherits name='com.google.gwt.user.User'/>
-
+  
+  <!-- Inherits the gwt charts -->
+  <inherits name="com.googlecode.gwt.charts.Charts"/> 
+  
   <!-- Inherit the default GWT style sheet.  You can change       -->
   <!-- the theme of your GWT application by uncommenting          -->
   <!-- any one of the following lines.                            -->

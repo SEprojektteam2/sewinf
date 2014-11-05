@@ -1,12 +1,11 @@
 package com.gwt.client;
 
-import com.google.appengine.api.*;
-import com.google.gwt.thirdparty.guava.common.collect.*;
+import com.googlecode.gwt.charts.client.corechart.PieChart;
 
 
 public class VisualizationManager {
 	
-	private DataTable DATA;
+	private var DATA;
 	private int curYear;
 	private String param1;
 	private String param2;
