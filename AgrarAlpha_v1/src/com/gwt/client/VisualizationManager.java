@@ -78,7 +78,7 @@ public class VisualizationManager {
 		graphs[0] = table;
 		
 		//GeoMap
-		GeoMap map = new GeoMap(DATA[curYear], null);
+		GeoMap map = new GeoMap(DATA[curYearIndex], null);
 		graphs[1] = map;
 	}
 	
