@@ -7,11 +7,16 @@ import com.google.gwt.visualization.client.AbstractDataTable.ColumnType;
 
 public class VisualizationManager {
 	
-	private DataTable DATA;
-	private int curYear;
+	private DataTable[] DATA;
+	private DataTable TableDATA;
+	private int curYearIndex;		//as index for DATA array
 	private String param1;
 	private String param2;
-	Table table;
+	
+	Selectable[] graphs;
+	//index 0 = Table --> always created
+	//index 1 = GeoMap --> only if no country was chosen
+	
 	
 	//Constructor
 	VisualizationManager(String firstParameter, String secondParameter)
@@ -22,11 +27,27 @@ public class VisualizationManager {
 	{
 		setParam1(firstParameter);
 		setParam2(secondParameter);
-		setCurYear(year);
 		
-		DATA = DataTable.create();
-		DATA.addColumn(ColumnType.NUMBER, "Year");
+		//has to be the index for the DATA array, not the actual year!
+		setCurYearIndex(year);
 		
+		prepareDataTable();
+		prepareGraphs();
+				
+	}
+	
+	private void prepareDataTable()
+	{
+		//In Table there will be all the years displayed
+		TableDATA = DataTable.create();
+		TableDATA.addColumn(ColumnType.NUMBER, "Year");
+		
+		//For all other charts it's only possible to display 1 year with a few exceptions - those will have a separat DATAset when we implement them
+		DATA = new DataTable[20];
+		for(int i = 0; i < DATA.length; i++)
+		{
+			DATA[i] = DataTable.create();
+		}
 		
 		//DATA.addColumn(ColumnType.STRING, param1);
 		
@@ -42,25 +63,32 @@ public class VisualizationManager {
           ['Bob',   {v: 7000,  f: '$7,000'},  true]
         ]);
 
-        var table = new google.visualization.Table(document.getElementById('table_div'));
-
+        
         table.draw(data, {showRowNumber: true});
 		*/
-		
+
 	}
+	
+	public void prepareGraphs()
+	{
+		graphs = new Selectable[2];
+		
+		//table
+		Table table = new Table(TableDATA, null);
+		graphs[0] = table;
+		
+		//GeoMap
+		GeoMap map = new GeoMap(DATA[curYear], null);
+		graphs[1] = map;
+	}
+	
 	/*		
 	gwt.Graph donut
 			gwt.Graph table
 			gwt.Graph ..
 			gwt.Graph.Slider
 			..
-			+VisualizationManager(int, String)
-			+VisualizationManager(int, int)
-			+VisualizationManager(int, char)
-			+VisualizationManager(int, double)
-			+setYear(int Year)
-			//int curYear = Year - eventuell auch noch Jahr der einzelnen gwt.Graph Objekte neu aufbereiten.
-			//prepareDataMap(); prepareDataTable.
+			
 			+selectData(Information)
 			+prepareDataMap( )
 			// Nimmt globales int curYear und zeichnet Grafik vom Array DATA[curYear][ ][ ]
@@ -71,14 +99,15 @@ public class VisualizationManager {
 	*/
 			
 //Get and set methods for attributes
-	public void setCurYear(int year)
+	public void setCurYearIndex(int year)
 	{
-		curYear = year;
+		//DOTO Berechnung des Indexes fuer DATA array
+		curYearIndex = year;
 	}
 	
-	public int getCurYear()
+	public int getCurYearIndex()
 	{
-		return curYear;
+		return curYearIndex;
 	}
 	
 	public void setParam1(String Parameter)
