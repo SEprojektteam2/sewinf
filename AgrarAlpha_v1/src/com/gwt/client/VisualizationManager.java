@@ -1,6 +1,6 @@
 package com.gwt.client;
 
-import com.googlecode.gwt.charts.client.corechart.PieChart;
+import com.googlecode.gwt.charts.*;
 
 
 public class VisualizationManager {
@@ -21,6 +21,7 @@ public class VisualizationManager {
 		setParam1(firstParameter);
 		setParam2(secondParameter);
 		setCurYear(year);
+		
 		
 		/*
 		var data = new google.visualization.DataTable();
