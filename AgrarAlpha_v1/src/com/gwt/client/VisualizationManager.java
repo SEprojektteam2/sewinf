@@ -1,11 +1,13 @@
 package com.gwt.client;
 
-import com.google.gwt.visualization.*;
+import com.google.gwt.visualization.client.visualizations.*;
+import com.google.gwt.visualization.client.*;
+import com.google.gwt.visualization.client.AbstractDataTable.ColumnType;
 
 
 public class VisualizationManager {
 	
-	private var DATA;
+	private DataTable DATA;
 	private int curYear;
 	private String param1;
 	private String param2;
@@ -22,6 +24,11 @@ public class VisualizationManager {
 		setParam2(secondParameter);
 		setCurYear(year);
 		
+		DATA = DataTable.create();
+		DATA.addColumn(ColumnType.NUMBER, "Year");
+		
+		
+		//DATA.addColumn(ColumnType.STRING, param1);
 		
 		/*
 		var data = new google.visualization.DataTable();
