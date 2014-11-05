@@ -1,6 +1,6 @@
 package com.gwt.client;
 
-import com.googlecode.gwt.charts.*;
+import com.google.gwt.visualization.*;
 
 
 public class VisualizationManager {
