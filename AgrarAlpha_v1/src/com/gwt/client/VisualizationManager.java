@@ -1,6 +1,7 @@
 package com.gwt.client;
 
 import com.google.appengine.api.*;
+import com.google.gwt.thirdparty.guava.common.collect.*;
 
 
 public class VisualizationManager {
@@ -9,6 +10,7 @@ public class VisualizationManager {
 	private int curYear;
 	private String param1;
 	private String param2;
+	Table table;
 	
 	//Constructor
 	VisualizationManager(String firstParameter, String secondParameter)
@@ -20,8 +22,6 @@ public class VisualizationManager {
 		setParam1(firstParameter);
 		setParam2(secondParameter);
 		setCurYear(year);
-		
-		DATA = new DataTable();
 		
 		/*
 		var data = new google.visualization.DataTable();
