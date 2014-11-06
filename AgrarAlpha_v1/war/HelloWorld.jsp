@@ -11,9 +11,9 @@
         <title>Upload Test</title>
     </head>
     <body>
-        <form action="<%= blobstoreService.createUploadUrl("HelloWorld/ImportHandlerServlet") %>" method="post" enctype="multipart/form-data">
+        <form action="<%= blobstoreService.createUploadUrl("/HelloWorld/ImportHandlerServlet") %>" method="post" enctype="multipart/form-data">
             <input type="text" name="foo">
-            <input type="file" name="myFile">
+            <input type="file" name="importCSV">
             <input type="submit" value="Submit">
         </form>
     </body>

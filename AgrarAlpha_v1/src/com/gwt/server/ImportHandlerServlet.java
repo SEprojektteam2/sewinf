@@ -3,12 +3,14 @@ package com.gwt.server;
 import java.io.BufferedReader;
 
 import com.google.appengine.api.blobstore.BlobKey;
+import com.google.appengine.api.blobstore.BlobstoreInputStream;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -52,7 +54,9 @@ import com.google.appengine.api.utils.SystemProperty;
 		  
 		  Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(req);
 		  BlobKey blobKey = blobs.get("importCSV");
-		   
+		  
+		  BufferedReader blobreader = new BufferedReader(new InputStreamReader(new BlobstoreInputStream(blobKey))); 
+		  System.out.println("BlobReader Created!");
 		  if (blobKey == null) {
 			  out.println("/");
 		  }
@@ -71,7 +75,7 @@ import com.google.appengine.api.utils.SystemProperty;
 		  
 		  
 		  
-		  CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fileName)));
+		  CSVReader reader = new CSVReader(blobreader);
 	               	    
 	      List<String[]> lines;
 	      lines = reader.readAll();
@@ -93,7 +97,9 @@ import com.google.appengine.api.utils.SystemProperty;
 	    
 	    
 	    MySQLConnection database = new MySQLConnection("173.194.253.240:3306","root","","agrar","agraralphav1:agrar");
-	    database.connect();
+	    if(database.connect()){
+	    	out.println("<html><head></head><body>Connection Started</body></html>");
+	    }
 	    Connection conn = database.returnConnection();
 	    
 	    try {
@@ -125,6 +131,7 @@ import com.google.appengine.api.utils.SystemProperty;
 		          stmt.setString(13,output[y][12]);
 	          
 	          success = stmt.executeUpdate();
+	          out.println("35: in try loop!");
 	          
 	        	}
 	          if (success == 1) {
