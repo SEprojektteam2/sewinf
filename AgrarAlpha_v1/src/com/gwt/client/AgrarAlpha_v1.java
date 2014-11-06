@@ -32,6 +32,9 @@ public class AgrarAlpha_v1 implements EntryPoint {
 	 * The message displayed to the user when the server cannot be reached or
 	 * returns an error.
 	 */
+	
+	
+	
 	/**
 	 * This is the entry point method.
 	 */
