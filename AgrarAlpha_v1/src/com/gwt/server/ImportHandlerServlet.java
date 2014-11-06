@@ -133,8 +133,11 @@ import com.google.appengine.api.utils.SystemProperty;
 	      out.println("<html><head></head><body>Connection Exception</body></html>");
 	      return;
 	    }
-
-	   
+	    
+	    MySQLConnection connect = new MySQLConnection("173.194.253.240:3306","root","","agrar","agraralphav1:agrar");
+	    connect.connect();
+	    connect.executeUpdate(statement)
+	    
 	    try {
 	      Connection conn = DriverManager.getConnection(url);
 	      try {
