@@ -89,65 +89,17 @@ import com.google.appengine.api.utils.SystemProperty;
 	    
 	    
 	    
-	    
-/*	    
-	    StringBuilder sb = new StringBuilder();
-	    BufferedReader reader = req.getReader();
-	    try {
-	        String line;
-	        while ((line = reader.readLine()) != null) {
-	            sb.append(line).append('\n');
-	        }
-	    } finally {
-	        reader.close();
-	    }
-	   out.println(sb.toString());
-*/	    
-	
+	  
 	    
 	    
-	    //CSVReader reader = new CSVReader(new BufferedReader(new FileReader(file)));
-	    
-	    //List<String[]> lines;
-	    //lines = reader.readAll();
-		//String matrix[][] =  lines.toArray(new String[lines.size()][]);
-	    out.println("<html><head></head><body>Hello!</body></html>");
-	    try {
-	      if (SystemProperty.environment.value() ==
-	          SystemProperty.Environment.Value.Production) {
-	        // Load the class that provides the new "jdbc:google:mysql://" prefix.
-	        Class.forName("com.mysql.jdbc.GoogleDriver");
-	        url = "jdbc:google:mysql://testagrar:myapp/test?user=root";
-	        out.println("<html><head></head><body>Production</body></html>");
-	      } else {
-	        // Local MySQL instance to use during development.
-	        Class.forName("com.mysql.jdbc.Driver");
-	        url = "jdbc:mysql://173.194.243.202:3306/test?user=root";
-	        out.println("<html><head></head><body>Local</body></html>");
-	        // Alternatively, connect to a Google Cloud SQL instance using:
-	        // jdbc:mysql://ip-address-of-google-cloud-sql-instance:3306/guestbook?user=root
-	      }
-	    } catch (Exception e) {
-	      e.printStackTrace();
-	      out.println(e.toString());
-	      out.println("<html><head></head><body>Connection Exception</body></html>");
-	      return;
-	    }
-	    
-	    MySQLConnection connect = new MySQLConnection("173.194.253.240:3306","root","","agrar","agraralphav1:agrar");
-	    connect.connect();
-	    connect.executeUpdate(statement)
+	    MySQLConnection database = new MySQLConnection("173.194.253.240:3306","root","","agrar","agraralphav1:agrar");
+	    database.connect();
+	    Connection conn = database.returnConnection();
 	    
 	    try {
-	      Connection conn = DriverManager.getConnection(url);
+	    
 	      try {
-	        String fname = req.getParameter("fname");
-	        String content = req.getParameter("content");
-	        if (fname == "" || content == "") {
-	          out.println(
-	              "<html><head></head><body>You are missing either a message or a name! Try again! " +
-	              "Redirecting in 3 seconds...</body></html>");
-	        } else {
+	        
 	        	int success = 2;
 	        	String output[][] = matrixList.get(0);
 	        	
@@ -155,9 +107,9 @@ import com.google.appengine.api.utils.SystemProperty;
 	        		out.println("Arraylist is empty!");
 	        	
 	        	for(int y = 1; y<output.length; y++){
-	        	String statement = "INSERT INTO records (domainCode, domain, areaCode, areaName, elementCode, elementName, itemCode, itemName, year, unit, value, flag, flagD) VALUES( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )";
-	        	PreparedStatement stmt = conn.prepareStatement(statement);
-	        	
+	        		String statement = "INSERT INTO records (domainCode, domain, areaCode, areaName, elementCode, elementName, itemCode, itemName, year, unit, value, flag, flagD) VALUES( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )";
+		        	PreparedStatement stmt = conn.prepareStatement(statement);
+		        	
 				stmt.setString(1, output[y][0]);
 		          stmt.setString(2,output[y][1]);
 		          stmt.setString(3,output[y][2]);
@@ -183,7 +135,7 @@ import com.google.appengine.api.utils.SystemProperty;
 	                "<html><head></head><body>Failure! Please try again! " +
 	                "Redirecting in 3 seconds...</body></html>");
 	          }
-	        }
+	        
 	      } finally {
 	        conn.close();
 	        out.println("<html><head></head><body>Close Connection</body></html>");
@@ -193,6 +145,7 @@ import com.google.appengine.api.utils.SystemProperty;
 	    	 out.println(exception);
 	    // out.print(e.printStackTrace());
 	    }
+	    database.close();
 	    out.flush();
 	    out.close(); 
 	  }
