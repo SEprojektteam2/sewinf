@@ -1,8 +1,7 @@
 package com.gwt.client;
 
 import com.gwt.shared.FieldVerifier;
-import com.google.appengine.api.blobstore.BlobstoreService;
-import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -40,9 +39,9 @@ public class AgrarAlpha_v1 implements EntryPoint {
 		
 		// Create a FormPanel and point it at a service.
 		  
-		BlobstoreService blobstore = BlobstoreServiceFactory.getBlobstoreService();
+	
 	    final FormPanel form = new FormPanel();
-	    form.setAction(blobstore.createUploadUrl("/ImportHandler"));
+	    form.setAction("/ImportHandler");
 
 	    // Because we're going to add a FileUpload widget, we'll need to set the
 	    // form to use the POST method, and multipart MIME encoding.

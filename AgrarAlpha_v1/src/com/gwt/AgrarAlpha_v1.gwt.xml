@@ -32,7 +32,5 @@
 
   <!-- allow Super Dev Mode -->
   <add-linker name="xsiframe"/>
-  <servlet class="com.gwt.server.MySQLConnection"
-path="/MySQLConnection" />
  
 </module>
