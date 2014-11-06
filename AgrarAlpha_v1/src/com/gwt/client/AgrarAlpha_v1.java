@@ -44,7 +44,7 @@ public class AgrarAlpha_v1 implements EntryPoint {
 		  
 	
 	    final FormPanel form = new FormPanel();
-	    form.setAction("/ImportHandler");
+	    form.setAction("/GuiAgrarV");
 
 	    // Because we're going to add a FileUpload widget, we'll need to set the
 	    // form to use the POST method, and multipart MIME encoding.
@@ -55,6 +55,9 @@ public class AgrarAlpha_v1 implements EntryPoint {
 	    VerticalPanel panel = new VerticalPanel();
 	    form.setWidget(panel);
 
+	    GuiAgrarV gui = new GuiAgrarV();
+	    gui.onModuleLoad();
+	    /*
 	    // Create a TextBox, giving it a name so that it will be submitted.
 	    final TextBox tb = new TextBox();
 	    tb.setName("textBoxFormElement");
@@ -101,6 +104,6 @@ public class AgrarAlpha_v1 implements EntryPoint {
 	        Window.alert(event.getResults());
 	      }
 	    });
-
+*/
 	    RootPanel.get().add(form);
 }}
