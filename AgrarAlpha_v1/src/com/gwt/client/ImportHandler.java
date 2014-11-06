@@ -14,6 +14,9 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
+import com.google.appengine.api.blobstore.BlobstoreService;
+import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
@@ -21,8 +24,10 @@ public class ImportHandler implements EntryPoint {
 
 	  public void onModuleLoad() {
 	    // Create a FormPanel and point it at a service.
+		  
+		BlobstoreService blobstore = BlobstoreServiceFactory.getBlobstoreService();
 	    final FormPanel form = new FormPanel();
-	    form.setAction("/ImportHandlerServlet");
+	    form.setAction(blobstore.createUploadUrl("/ImportHandler"));
 
 	    // Because we're going to add a FileUpload widget, we'll need to set the
 	    // form to use the POST method, and multipart MIME encoding.
@@ -49,7 +54,7 @@ public class ImportHandler implements EntryPoint {
 
 	    // Create a FileUpload widget.
 	    FileUpload upload = new FileUpload();
-	    upload.setName("uploadFormElement");
+	    upload.setName("importCSV");
 	    panel.add(upload);
 
 	    // Add a 'submit' button.

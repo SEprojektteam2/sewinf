@@ -1,6 +1,13 @@
 package com.gwt.server;
 
 import java.io.BufferedReader;
+
+import com.google.appengine.api.blobstore.BlobKey;
+import com.google.appengine.api.blobstore.BlobstoreService;
+import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+ 
+
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,6 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,56 +43,48 @@ import com.google.appengine.api.utils.SystemProperty;
 	    
 		  resp.setContentType("text/html");
 		  
-		String url = null;
-	    PrintWriter out = resp.getWriter();
+		  String url = null;
+		  PrintWriter out = resp.getWriter();
+		  ArrayList<String[][]> matrixList = new ArrayList<String[][]>();
 	    
-	    ArrayList<String[][]> matrixList = new ArrayList<String[][]>();
-	    
-        // process only multipart requests
-       if (ServletFileUpload.isMultipartContent(req)) {
-          // Create a factory for disk-based file items
-           FileItemFactory factory = new DiskFileItemFactory(5000000,null);
-
-            // Create a new file upload handler
-          ServletFileUpload upload = new ServletFileUpload(factory);
-	    
-	    // Parse the request
-	                 try {
-	                 List<FileItem> items = upload.parseRequest(req);
-	                  for (FileItem item : items) {
-	                    // process only file upload - discard other form item types
-	                      if (item.isFormField()) continue;
-	                      
-	                     String fileName = item.getName();
-	                       // get only the file name not whole path
-	                         if (fileName != null) {
-	                            fileName = FilenameUtils.getName(fileName);
-	                       }
-	   
-	                       File uploadedFile = new File(fileName);
-	                       /* if (uploadedFile.createNewFile()) {
-	                            item.write(uploadedFile);
-	                            resp.setStatus(HttpServletResponse.SC_CREATED);
-	                            resp.getWriter().print("The file was created successfully.");
-	                          resp.flushBuffer();
-	                      } else
-	                           throw new IOException("The file already exists in repository.");
-	                  */
-	                    CSVReader reader = new CSVReader(new BufferedReader(new FileReader(uploadedFile)));
+        
+		   BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+		    
+		  String fileName = "";
+		  
+		  Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(req);
+		  BlobKey blobKey = blobs.get("importCSV");
+		   
+		  if (blobKey == null) {
+			  out.println("/");
+		  }
+		  else {
+			 
+			 fileName = blobKey.getKeyString(); 
+			
+			  }
+			 
+	  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  CSVReader reader = new CSVReader(new BufferedReader(new FileReader(fileName)));
 	               	    
-	               	    List<String[]> lines;
-	               	    lines = reader.readAll();
+	      List<String[]> lines;
+	      lines = reader.readAll();
 	               	   
-	               	 String matrix[][] =  lines.toArray(new String[lines.size()][]);     
+	      String matrix[][] =  lines.toArray(new String[lines.size()][]);     
 	                  
-	               	 matrixList.add(matrix);
-	                  reader.close();
-	                  }
-	              } catch (Exception e) {
-	                   resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
-	                           "An error occurred while creating the file : " + e.getMessage());
-	                }
-	  }
+	      matrixList.add(matrix);
+	      reader.close();
+	  
+	             
+	 
 	    
 	    
 	    
