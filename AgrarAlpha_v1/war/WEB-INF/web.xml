@@ -16,19 +16,22 @@
     <url-pattern>/agraralpha_v1/greet</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>ImportHandlerServlet</servlet-name>
+    <servlet-class>com.gwt.server.ImportHandlerServlet</servlet-class>
+  </servlet>
+   
+  <servlet-mapping>
+    <servlet-name>ImportHandlerServlet</servlet-name>
+    <url-pattern>/HelloWorld/ImportHandlerServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>AgrarAlpha_v1.html</welcome-file>
   </welcome-file-list>
   
-    <servlet>
-    <servlet-name>ImportHandler</servlet-name>
-    <servlet-class>com.gwt.server.ImportHandlerServlet</servlet-class>
-  </servlet>
-   
-  <servlet-mapping>
-        <servlet-name>ImportHandlerServlet</servlet-name>
-        <url-pattern>/ImportHandlerServlet</url-pattern>
-    </servlet-mapping>
 
 </web-app>
