@@ -20,12 +20,19 @@ public class VisualizationManager {
 	
 	
 	//Constructor
-	public VisualizationManager(DataTable aTableDATA, String firstParameter, String secondParameter)
+	public VisualizationManager(DataTable aTableDATA, String country, String product, String type, String year)
 	{
-		this(aTableDATA, firstParameter, secondParameter, 2014);
+		if (country.contentEquals("world"))
+		{
+			String fristParameter = "coutry";
+		}
+		//
+		//if()
+		
+		//this(aTableDATA, firstParameter, secondParameter, 2014);
 	}
 	
-	public VisualizationManager(DataTable aTableDATA, String firstParameter, String secondParameter, int year)
+	private VisualizationManager(DataTable aTableDATA, String firstParameter, String secondParameter, int year)
 	{
 		TableDATA = aTableDATA;
 		setParam1(firstParameter);

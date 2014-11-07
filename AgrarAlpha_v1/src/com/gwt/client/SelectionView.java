@@ -18,7 +18,7 @@ import com.google.gwt.user.client.ui.TextBox;
 public class SelectionView extends Composite{
 
 	private Label yearLabel;
-	private CheckBox countryCB;
+	private Label countryLabel;
 	private CheckBox productCB;
 	private CheckBox typeCB;
 	
@@ -34,6 +34,8 @@ public class SelectionView extends Composite{
 	private MainView main;
 	
 	private int CBcounter = 0;
+	private final int MAX_CBcounterWorld = 2;
+	private final int MAX_CBcounterCountry = 1;
 /*
  This class is drawing the options, the user can choose
  The listbox will probably get replaced, cant select multiple options
@@ -46,7 +48,7 @@ public class SelectionView extends Composite{
 		this.main=main;
 		
 		yearLabel = new Label("Year");
-		countryCB = new CheckBox("Country");
+		countryLabel = new Label("Country");
 		productCB = new CheckBox("Product");
 		typeCB = new CheckBox("Product Type");
 	
@@ -57,10 +59,9 @@ public class SelectionView extends Composite{
 		
 		
 		countryLB = new ListBox();
-		countryLB.addItem(" ");
+		countryLB.addItem("World");
 		countryLB.addItem("Switzerland");
 		countryLB.addItem("Germany");
-		countryLB.addChangeHandler(new listBoxChangeHandler(countryLB, countryCB));
 
 		
 		productLB = new ListBox();
@@ -84,7 +85,7 @@ public class SelectionView extends Composite{
 		fTable.setWidget(0, 0, yearLabel);
 		fTable.setWidget(0,1,yearLB);
 		
-		fTable.setWidget(1,0, countryCB);
+		fTable.setWidget(1,0, countryLabel);
 		fTable.setWidget(1,1, countryLB);
 
 		fTable.setWidget(2,0, productCB);
@@ -123,7 +124,7 @@ public class SelectionView extends Composite{
 		}
 		
 		public void onChange(ChangeEvent event) {
-			
+			//if(countryLB)
 			if(list.isItemSelected(0))
 				{
 					if(box.getValue())
@@ -136,19 +137,13 @@ public class SelectionView extends Composite{
 				}
 			else
 				{
-					if(!box.getValue() && CBcounter < 2)
+					if(!box.getValue() && (CBcounter < MAX_CBcounterWorld || CBcounter < MAX_CBcounterCountry))
 					{
 						CBcounter++;
 						box.setValue(true);
 					}
-					
-					
-				
 				}
-			
-			
 		}
-		
 	}
 	
 	
@@ -167,9 +162,23 @@ public class SelectionView extends Composite{
 
 		@Override
 		public void onClick(ClickEvent event) {
-			if(CBcounter == 2)
+			if(countryLB.isItemSelected(0))
 			{
-				
+				if(!(CBcounter < MAX_CBcounterWorld))
+				{
+					box.setValue(false);
+				}
+				else if(box.getValue())
+				{
+					
+					box.setValue(false);
+					CBcounter--;
+				}
+				else if(!box.getValue())
+				{
+					box.setValue(true);
+					CBcounter++;
+				}
 			}
 			
 		}
