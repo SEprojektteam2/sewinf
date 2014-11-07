@@ -34,6 +34,8 @@ public class SelectionView extends Composite{
 	private MainView main;
 	
 	private int CBcounter = 0;
+	private final int MAX_CBcounterWorld = 2;
+	private final int MAX_CBcounterCountry = 1;
 /*
  This class is drawing the options, the user can choose
  The listbox will probably get replaced, cant select multiple options
@@ -135,19 +137,13 @@ public class SelectionView extends Composite{
 				}
 			else
 				{
-					if(!box.getValue() && CBcounter < 2)
+					if(!box.getValue() && (CBcounter < MAX_CBcounterWorld || CBcounter < MAX_CBcounterCountry))
 					{
 						CBcounter++;
 						box.setValue(true);
 					}
-					
-					
-				
 				}
-			
-			
 		}
-		
 	}
 	
 	
@@ -166,20 +162,23 @@ public class SelectionView extends Composite{
 
 		@Override
 		public void onClick(ClickEvent event) {
-			if(!(CBcounter < 2))
+			if(countryLB.isItemSelected(0))
 			{
-				box.setValue(false);
-			}
-			else if(box.getValue())
-			{
-				
-				box.setValue(false);
-				CBcounter--;
-			}
-			else if(!box.getValue())
-			{
-				box.setValue(true);
-				CBcounter++;
+				if(!(CBcounter < MAX_CBcounterWorld))
+				{
+					box.setValue(false);
+				}
+				else if(box.getValue())
+				{
+					
+					box.setValue(false);
+					CBcounter--;
+				}
+				else if(!box.getValue())
+				{
+					box.setValue(true);
+					CBcounter++;
+				}
 			}
 			
 		}
