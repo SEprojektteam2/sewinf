@@ -31,6 +31,10 @@ public class CreateView extends Composite{
 		String s="content from visualizationmanager"; 
 		Button b= new Button(s);  
 		tablePanel.add(new Button("Placeholder"));
+		
+		//adding table
+		tablePanel.add(child);
+		
 		graphPanel.add(new Button("Apple"));
 		mapPanel.add(b);
 		
