@@ -11,21 +11,29 @@ import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
 
 public class SelectionView extends Composite{
 
-	private CheckBox yearCB;
+	private Label yearLabel;
 	private CheckBox countryCB;
 	private CheckBox productCB;
+	private CheckBox typeCB;
+	
 	private FlowPanel fPanel = new FlowPanel();	
 	private ListBox yearLB; //the size will adapt
 	FlexTable fTable= new FlexTable();
+	
 	private ListBox countryLB;
 	private ListBox productLB;
+	private ListBox typeLB;
+	
 	private Button createBtn;
 	private MainView main;
+	
+	private int CBcounter = 0;
 /*
  This class is drawing the options, the user can choose
  The listbox will probably get replaced, cant select multiple options
@@ -36,15 +44,17 @@ public class SelectionView extends Composite{
 
 		initWidget(this.fTable);
 		this.main=main;
-		yearCB = new CheckBox("Year");
+		
+		yearLabel = new Label("Year");
 		countryCB = new CheckBox("Country");
 		productCB = new CheckBox("Product");
+		typeCB = new CheckBox("Product Type");
 	
 		yearLB = new ListBox();
 		yearLB.addItem(" ");      //Adding blank option
 		yearLB.addItem("2000"); 
 		yearLB.addItem("2001");// Adding Options to select
-		yearLB.addChangeHandler(new listBoxChangeHandler(yearLB, yearCB));
+		
 		
 		countryLB = new ListBox();
 		countryLB.addItem(" ");
@@ -58,6 +68,12 @@ public class SelectionView extends Composite{
 		productLB.addItem("Apple");
 		productLB.addItem("Pie");
 		productLB.addChangeHandler(new listBoxChangeHandler(productLB, productCB));
+		
+		typeLB = new ListBox();
+		typeLB.addItem(" ");
+		typeLB.addItem("Import");
+		typeLB.addItem("Export");
+		typeLB.addChangeHandler(new listBoxChangeHandler(typeLB, typeCB));
 
 
 		createBtn=new Button("Create");
@@ -65,7 +81,7 @@ public class SelectionView extends Composite{
 		
 
 	/* Adding every component to the FlexTable*/
-		fTable.setWidget(0,0,yearCB);
+		fTable.setWidget(0, 0, yearLabel);
 		fTable.setWidget(0,1,yearLB);
 		
 		fTable.setWidget(1,0, countryCB);
@@ -74,7 +90,11 @@ public class SelectionView extends Composite{
 		fTable.setWidget(2,0, productCB);
 		fTable.setWidget(2,1, productLB);
 		
-		fTable.setWidget(3,0,createBtn);
+		fTable.setWidget(3,0, typeCB);
+		fTable.setWidget(3,1, typeLB);
+		
+		
+		fTable.setWidget(4,0,createBtn);
 
 
       }
@@ -103,22 +123,60 @@ public class SelectionView extends Composite{
 		}
 		
 		public void onChange(ChangeEvent event) {
+			
 			if(list.isItemSelected(0))
 				{
+					if(box.getValue())
+					{
+						CBcounter--;
+					}
+					
 					box.setValue(false);
+					
 				}
 			else
 				{
-					box.setValue(true);
+					if(!box.getValue() && CBcounter < 2)
+					{
+						CBcounter++;
+						box.setValue(true);
+					}
+					
+					
+				
 				}
+			
 			
 		}
 		
 	}
+	
+	
+	private class checkBoxClickHandler implements ClickHandler{
 
 
+		private CheckBox box;
+		
+
+		public checkBoxClickHandler(CheckBox box){
+			
+			this.box = box;
+			
+		}
+		
+
+		@Override
+		public void onClick(ClickEvent event) {
+			if(CBcounter == 2)
+			{
+				
+			}
+			
+		}
+		
 
 
+	}
 
 
 }
