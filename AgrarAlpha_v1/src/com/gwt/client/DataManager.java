@@ -5,7 +5,7 @@ import java.sql.Connection;
 import com.google.gwt.visualization.client.DataTable;
 import com.gwt.server.MySQLConnection;
 
-public class Datamanager {
+public class DataManager {
 	
 	//Create connection to mysqldatabase
 	private void connectToDatabase(){ 
