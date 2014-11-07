@@ -2,6 +2,8 @@ package com.gwt.client;
 
 //package guiA.client;
 
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
@@ -17,9 +19,9 @@ public class SelectionView extends Composite{
 	private CheckBox yearCB;
 	private CheckBox countryCB;
 	private CheckBox productCB;
-	private FlowPanel fPanel = new FlowPanel();	private ListBox yearFromLB; //the size will adapt
+	private FlowPanel fPanel = new FlowPanel();	
+	private ListBox yearLB; //the size will adapt
 	FlexTable fTable= new FlexTable();
-	private ListBox yearToLB;
 	private ListBox countryLB;
 	private ListBox productLB;
 	private Button createBtn;
@@ -38,37 +40,33 @@ public class SelectionView extends Composite{
 		countryCB = new CheckBox("Country");
 		productCB = new CheckBox("Product");
 	
-		yearFromLB = new ListBox();
-		yearFromLB.addItem(" ");      //Adding blank option
-		yearFromLB.addItem("2000"); 
-		yearFromLB.addItem("2001");// Adding Options to select
-		
-		/*
-		yearToLB = new ListBox();
-		yearToLB.addItem(" ");
-		yearToLB.addItem("2001");
-*/
+		yearLB = new ListBox();
+		yearLB.addItem(" ");      //Adding blank option
+		yearLB.addItem("2000"); 
+		yearLB.addItem("2001");// Adding Options to select
+		yearLB.addChangeHandler(new listBoxChangeHandler(yearLB, yearCB));
 		
 		countryLB = new ListBox();
 		countryLB.addItem(" ");
 		countryLB.addItem("Switzerland");
 		countryLB.addItem("Germany");
+		countryLB.addChangeHandler(new listBoxChangeHandler(countryLB, countryCB));
 
 		
 		productLB = new ListBox();
 		productLB.addItem(" ");
 		productLB.addItem("Apple");
 		productLB.addItem("Pie");
+		productLB.addChangeHandler(new listBoxChangeHandler(productLB, productCB));
 
 
-		 createBtn=new Button("Create");
-         createBtn.addClickHandler(new createClickHandler());
+		createBtn=new Button("Create");
+        createBtn.addClickHandler(new createClickHandler());
 		
 
 	/* Adding every component to the FlexTable*/
 		fTable.setWidget(0,0,yearCB);
-		fTable.setWidget(0,1,yearFromLB);
-		fTable.setWidget(0,2,yearToLB);
+		fTable.setWidget(0,1,yearLB);
 		
 		fTable.setWidget(1,0, countryCB);
 		fTable.setWidget(1,1, countryLB);
@@ -89,6 +87,32 @@ public class SelectionView extends Composite{
 		public void onClick(ClickEvent event) {
 			main.openCreateView();
 			}
+		
+	}
+	
+	private class listBoxChangeHandler implements ChangeHandler{
+		
+		private CheckBox box;
+		private ListBox list;
+		
+
+		public listBoxChangeHandler(ListBox list, CheckBox box){
+			this.list = list;
+			this.box = box;
+			
+		}
+		
+		public void onChange(ChangeEvent event) {
+			if(list.isItemSelected(0))
+				{
+					box.setValue(false);
+				}
+			else
+				{
+					box.setValue(true);
+				}
+			
+		}
 		
 	}
 
