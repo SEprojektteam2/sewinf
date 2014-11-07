@@ -41,7 +41,7 @@ public class DataManager {
 		
 	}
 	
-	public void getCountrys(){
+	public void getCountries(){
 		//Array mit Strings als Rückgabe
 		//limit 1 bei der Abfrage (entfernt die Dupletten)
 	}
