@@ -40,12 +40,15 @@ public class SelectionView extends Composite{
 	
 		yearFromLB = new ListBox();
 		yearFromLB.addItem(" ");      //Adding blank option
-		yearFromLB.addItem("2000"); // Adding Options to select
+		yearFromLB.addItem("2000"); 
+		yearFromLB.addItem("2001");// Adding Options to select
 		
+		/*
 		yearToLB = new ListBox();
 		yearToLB.addItem(" ");
 		yearToLB.addItem("2001");
-
+*/
+		
 		countryLB = new ListBox();
 		countryLB.addItem(" ");
 		countryLB.addItem("Switzerland");
