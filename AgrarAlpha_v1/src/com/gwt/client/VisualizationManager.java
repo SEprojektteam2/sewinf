@@ -45,16 +45,13 @@ public class VisualizationManager {
 			secondParameter = country + " " + product;
 		}
 
-			
-		
-		
 		
 		TableDATA = aTableDATA;
 		setParam1(firstParameter);
 		setParam2(secondParameter);
-		
-		prepareData();
+
 		setCurYearIndex(year);
+		prepareData();
 		
 	}
 	
