@@ -7,6 +7,10 @@ import com.google.gwt.visualization.client.AbstractDataTable.ColumnType;
 
 public class VisualizationManager {
 	
+	public final int DIF_YEAR = 2011-1990;
+	public final int MIN_YEAR = 1990;
+	public final int MAX_YEAR = 2011;
+	
 	private DataTable[] DATA;
 	
 	private DataTable TableDATA;
@@ -22,27 +26,33 @@ public class VisualizationManager {
 	//Constructor
 	public VisualizationManager(DataTable aTableDATA, String country, String product, String type, String year)
 	{
+		String firstParameter;
+		String secondParameter;
+		
 		if (country.contentEquals("world"))
 		{
-			String fristParameter = "coutry";
+			firstParameter = "Coutry";
+			secondParameter = product + " " + type;
 		}
-		//
-		//if()
+		else if(product.contentEquals("null"))
+		{
+			firstParameter = "Product";
+			secondParameter = country + " " + type;
+		}
+		else
+		{
+			firstParameter = "Type";
+			secondParameter = country + " " + product;
+		}
+
 		
-		//this(aTableDATA, firstParameter, secondParameter, 2014);
-	}
-	
-	private VisualizationManager(DataTable aTableDATA, String firstParameter, String secondParameter, int year)
-	{
 		TableDATA = aTableDATA;
 		setParam1(firstParameter);
 		setParam2(secondParameter);
-		
+
+		setCurYearIndex(year);
 		prepareData();
 		
-		//has to be the index for the DATA array, not the actual year!
-		setCurYearIndex(year);
-				
 	}
 	
 	private void prepareData()
@@ -80,11 +90,25 @@ public class VisualizationManager {
 		graphs[1] = map;
 	}
 		
-//Get and set methods for attributes
-	public void setCurYearIndex(int year)
+	//calculating the index which will represent the appropriate year
+	private int calculateYearIndex(String year)
 	{
-		//DOTO Berechnung des Indexes fuer DATA array
-		curYearIndex = year;
+		int index = -1;
+		
+		int yInd = Integer.parseInt(year);
+		yInd -= MAX_YEAR;
+		
+		index = Math.abs(yInd); 
+		
+		return index;
+	}
+
+	
+//Get and set methods for attributes
+	public void setCurYearIndex(String year)
+	{
+		
+		curYearIndex = calculateYearIndex(year);
 		
 		//graphs need to be updated because a different Year is to be shown
 		prepareGraphs();
