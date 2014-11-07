@@ -22,18 +22,18 @@ public class Datamanager {
 	}
 	
 	
-	public void getData(String country, String product, String type){
+	public void getData(String country, String product, String type){// "0" nicht angegeben =>
 		//private DataTable TableDATA;
 		//-> siehe prepareData() VisualizationManager
 		
 	}
 	
 	public void saveUser(String username, String param1, String param2){
-		
+		//coming soon
 	}
 	
 	public void getUser(String username){
-		
+		//coming soon
 	}
 	
 	
