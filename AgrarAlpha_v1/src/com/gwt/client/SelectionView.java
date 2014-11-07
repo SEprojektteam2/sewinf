@@ -122,7 +122,7 @@ public class SelectionView extends Composite{
 		}
 		
 		public void onChange(ChangeEvent event) {
-			
+			//if(countryLB)
 			if(list.isItemSelected(0))
 				{
 					if(box.getValue())
