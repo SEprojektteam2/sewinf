@@ -23,10 +23,21 @@ public class DataManager {
 	
 	
 	public void getDataTable(String country, String product, String type){
-		// "0" nicht angegeben => nicht Beachtung der varaible 
+		// "null" nicht angegeben => nicht Beachtung der varaible 
 		//private DataTable TableDATA;
 		//-> siehe prepareData() VisualizationManager
 		//evt. absteigend nach jahr sortieren und über geben
+		if(country=="null"){// country=null when world is selected 
+				
+		}
+		if(product=="null"){
+			
+		}
+		if(type=="null"){
+			
+		}
+		
+		
 		
 	}
 	
