@@ -22,10 +22,17 @@ public class DataManager {
 	}
 	
 	
-	public void getData(String country, String product, String type){// "0" nicht angegeben =>
+	public void getDataTable(String country, String product, String type){
+		// "0" nicht angegeben => nicht Beachtung der varaible 
 		//private DataTable TableDATA;
 		//-> siehe prepareData() VisualizationManager
+		//evt. absteigend nach jahr sortieren und über geben
 		
+	}
+	
+	public void getCountys(){
+		//Array mit Strings als Rückgabe
+		//limit 1 bei der Abfrage (entfernt die Dupletten)
 	}
 	
 	public void saveUser(String username, String param1, String param2){
