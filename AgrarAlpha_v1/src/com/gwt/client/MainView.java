@@ -62,7 +62,10 @@ public class MainView extends Composite {
 		contentPanel.clear();
 	    ExtendedMenuView menu= new ExtendedMenuView(this);
 		rootPanel.add(menu);
-		CreateView cView= new CreateView();
+		
+		VisualizationManager VisMan = null;
+		
+		CreateView cView= new CreateView(VisMan);
 		contentPanel.add(cView);
 		rootPanel.add(contentPanel);
    }

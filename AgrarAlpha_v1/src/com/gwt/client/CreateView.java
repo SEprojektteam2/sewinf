@@ -17,11 +17,15 @@ public class CreateView extends Composite{
 	private VerticalPanel tablePanel = new VerticalPanel();
 	private VerticalPanel graphPanel = new VerticalPanel();
 	private VerticalPanel mapPanel = new VerticalPanel();
+	
+	private VisualizationManager VisMan;
 
 	/* This class present the view the user has after he clicked the create button on mainView. it contains the graphics the user wants to see
 	 */
-	public CreateView(){
+	public CreateView(VisualizationManager aVisMan){
 		initWidget(this.basePanel);
+		
+		VisMan = aVisMan;
 		
 		tablePanel = new VerticalPanel();
 		graphPanel = new VerticalPanel();
