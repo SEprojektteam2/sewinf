@@ -33,7 +33,7 @@ public class CreateView extends Composite{
 		tablePanel.add(new Button("Placeholder"));
 		
 		//adding table
-		tablePanel.add(child);
+		//tablePanel.add(child);
 		
 		graphPanel.add(new Button("Apple"));
 		mapPanel.add(b);
