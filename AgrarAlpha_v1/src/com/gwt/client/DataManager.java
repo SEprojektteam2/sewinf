@@ -5,6 +5,8 @@ import java.sql.Connection;
 import com.google.gwt.visualization.client.DataTable;
 import com.gwt.server.MySQLConnection;
 
+import java.util.ArrayList;
+
 public class DataManager {
 	
 	//Create connection to mysqldatabase
@@ -44,6 +46,9 @@ public class DataManager {
 	public void getCountries(){
 		//Array mit Strings als Rückgabe
 		//limit 1 bei der Abfrage (entfernt die Dupletten)
+		ArrayList<String> countries = new ArrayList<String>();
+		
+		
 	}
 	
 	public void saveUser(String username, String param1, String param2){
