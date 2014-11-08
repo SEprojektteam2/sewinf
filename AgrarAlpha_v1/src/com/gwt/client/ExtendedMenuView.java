@@ -24,9 +24,19 @@ public class ExtendedMenuView extends Composite {
 		this.main=main;
 		
 		openBtn = new Button("Open");
+		openBtn.addClickHandler(new openClickHandler());
+
+
 		changeBtn = new Button("Change");
+		changeBtn.addClickHandler(new changeClickHandler());
+
 		saveBtn = new Button("Save");
+		saveBtn.addClickHandler(new saveClickHandler());
+
 		exportBtn = new Button("Export");
+		exportBtn.addClickHandler(new exportClickHandler());
+
+		
 		homeBtn = new Button("AgrarAlpha");
 		homeBtn.addClickHandler(new homeClickHandler());
 		
@@ -36,6 +46,15 @@ public class ExtendedMenuView extends Composite {
 		this.vPanel.add(saveBtn);
 		this.vPanel.add(exportBtn);
 		
+		
+	}
+	
+	private class openClickHandler implements ClickHandler{
+
+		@Override
+		public void onClick(ClickEvent event) {
+			main.openOpenView();
+			}
 		
 	}
 	
@@ -49,4 +68,30 @@ public class ExtendedMenuView extends Composite {
 		}
 		
 	}
+	private class saveClickHandler implements ClickHandler{
+
+		@Override
+		public void onClick(ClickEvent event) {
+			main.openSaveView();
+			}
+	}
+	
+		private class exportClickHandler implements ClickHandler{
+
+			@Override
+			public void onClick(ClickEvent event) {
+				main.openExportView();
+				}
+			
+		}
+		private class changeClickHandler implements ClickHandler{
+
+			@Override
+			public void onClick(ClickEvent event) {
+				main.openChangeView();
+				}
+			
+		}
+	
+	
 }

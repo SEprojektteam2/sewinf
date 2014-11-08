@@ -8,6 +8,7 @@ import com.gwt.server.MySQLConnection;
 import java.util.ArrayList;
 
 public class DataManager {
+	Connection connection;
 	
 	//Create connection to mysqldatabase
 	private void connectToDatabase(){ 
@@ -15,7 +16,7 @@ public class DataManager {
 	    if(database.connect()){
 	    	System.out.println("<html><head></head><body>Connection Started</body></html>");
 	    }
-	    Connection conn = database.returnConnection();
+	    Connection connection = database.returnConnection();
 	}
 	
 	private void calculateInterpolation(){
@@ -46,8 +47,10 @@ public class DataManager {
 	public void getCountries(){
 		//Array mit Strings als Rückgabe
 		//limit 1 bei der Abfrage (entfernt die Dupletten)
+		connectToDatabase();
 		ArrayList<String> countries = new ArrayList<String>();
-		
+		countries.add(0, "Hi Mom");
+		//preparedStatement stm = connection.prepareStatement("SELECT myuser, webpage, datum, summary, COMMENTS from FEEDBACK.COMMENTS");
 		
 	}
 	
