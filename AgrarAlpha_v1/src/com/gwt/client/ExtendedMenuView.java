@@ -2,6 +2,8 @@ package com.gwt.client;
 
 //package guiA.client;
 
+import java.sql.SQLException;
+
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
@@ -64,7 +66,6 @@ public class ExtendedMenuView extends Composite {
 		public void onClick(ClickEvent event) {
 			
 			main.openHomeView();
-
 		}
 		
 	}

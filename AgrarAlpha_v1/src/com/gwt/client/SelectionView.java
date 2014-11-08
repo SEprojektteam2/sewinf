@@ -2,6 +2,9 @@ package com.gwt.client;
 
 //package guiA.client;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -49,7 +52,7 @@ public class SelectionView extends Composite {
 	 * This class is drawing the options, the user can choose from. The
 	 * RootPanel is a FlexTable (Table with flexible size)
 	 */
-	public SelectionView(MainView main) {
+	public SelectionView(MainView main){
 
 		initWidget(this.fTable);
 		this.main = main;
@@ -75,18 +78,23 @@ public class SelectionView extends Composite {
 			year = year.valueOf(i);
 			yearLB.addItem(year);
 		}
+		
 		// String country=null;
 		/* fills listbox with countries */
-		/*
-		 * ArrayList cArray= data.getCountries(); 
-		 * for(int j=0;j<cArray.length;j++) {
-		 * country=cArray.get(i); countryLB.addItem(country); }
-		 */
 		countryLB = new ListBox();
+		countryLB.addChangeHandler(new countryLBChangeHandler());
+		ArrayList<String> cArray= new ArrayList<String>();
+		cArray = data.getCountries(); 
+		for(int j=0;j<cArray.size();j++) {
+			String country=cArray.get(j); 
+			countryLB.addItem(country); 
+		}
+		
+		/*countryLB = new ListBox();
 		countryLB.addChangeHandler(new countryLBChangeHandler());
 		countryLB.addItem("World");
 		countryLB.addItem("Switzerland");
-		countryLB.addItem("Germany");
+		countryLB.addItem("Germany");*/
 
 		productLB = new ListBox();
 		productLB.addItem(" ");

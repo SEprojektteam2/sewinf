@@ -2,6 +2,8 @@ package com.gwt.client;
 
 //package guiA.client;
 
+import java.sql.SQLException;
+
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -19,7 +21,7 @@ public class MainView extends Composite {
 	 * main view is the homepage where the user can choose the options to create
 	 * the graph. Or can open saved options
 	 */
-	public MainView() {
+	public MainView(){
 		initWidget(this.rootPanel);
 
 		MenuView menu = new MenuView(this);
@@ -47,7 +49,7 @@ public class MainView extends Composite {
 	}
 
 	/* clears the panel and draw the home view */
-	public void openHomeView() {
+	public void openHomeView(){
 		rootPanel.clear();
 		contentPanel.clear();
 		MenuView menu = new MenuView(this);
