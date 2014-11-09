@@ -11,6 +11,7 @@ import com.google.gwt.visualization.client.*;
 import com.google.gwt.visualization.client.AbstractDataTable.ColumnType;
 
 
+
 import java.util.ArrayList;
 
 public class DataManager {
@@ -128,25 +129,26 @@ public class DataManager {
 		
 		DataTable DATA = DataTable.create();
 
-		//DATA.addColumn(ColumnType.STRING, "Year");
 		DATA.addColumn(ColumnType.STRING, searchingVar);
-		//DATA[i].addColumn(ColumnType.STRING, outputVar);
+		for(int j=2011; j>=1990;j--){      //TODO Achtung Funktion zum auffuellen
+			DATA.addColumn(ColumnType.NUMBER, Integer.toString(j));
+		}
 			
 		DATA.addRows(counter);
 
 		for(int c = 0; c < DATA.getNumberOfRows(); c++ )
 		{
-			DATA.setCell(c, 0, TableDATA.getColumnLabel(c+1), TableDATA.getColumnLabel(c+1), null);
-			DATA.setCell(c, 1, TableDATA.getValueDouble(i, c+1), TableDATA.getFormattedValue(i, c+1), null);
+			int k;
+			String[] temp=null;
+			for(k = 1; k <= DATA.getNumberOfColumns(); k++ )
+			{
+				temp=result.get(k-1);
+				DATA.setCell(c, k, Double.parseDouble(temp[2]), temp[2], null);
+			}
+			DATA.setCell(c, 0, temp[1],temp[1] , null);
 		}
 		
 		return DATA;
-		
-		//1990 Switzerland Output
-		//1991 Switzerland Output
-		//		Switzeland			
-		//1990	Output
-		//1991	Output
 	}
 	
 	public ArrayList<String> getCountries(){
