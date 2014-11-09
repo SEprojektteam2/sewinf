@@ -4,6 +4,7 @@ import java.sql.*;
 
 import com.google.gwt.visualization.client.DataTable;
 import com.gwt.server.MySQLConnection;
+import com.google.appengine.api.utils.SystemProperty;
 
 import java.util.ArrayList;
 
@@ -48,7 +49,7 @@ public class DataManager {
 		//Array mit Strings als Rückgabe
 		//limit 1 bei der Abfrage (entfernt die Dupletten)
 		ArrayList<String> countries = new ArrayList<String>();
-		countries.add(0, "Hi Mom");
+		countries.add(0, "World");
 		
 		/*connectToDatabase();
 		// if you only need a few columns, specify them by name instead of using "*"
@@ -77,7 +78,7 @@ public class DataManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
-		return countries;
+		return (countries);
 	}
 	
 	public void saveUser(String username, String param1, String param2){
