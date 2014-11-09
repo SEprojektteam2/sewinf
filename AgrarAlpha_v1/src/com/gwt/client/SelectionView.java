@@ -85,10 +85,10 @@ public class SelectionView extends Composite {
 		countryLB.addChangeHandler(new countryLBChangeHandler());
 		ArrayList cArray= new ArrayList();
 		cArray = data.getCountries(); 
-		/*for(int j=0;j<cArray.size();j++) {
-			String country=cArray.get(j); 
+		for(int j=0;j<cArray.size();j++) {
+			String country=(String) cArray.get(j); 
 			countryLB.addItem(country); 
-		}*/
+		}
 		
 		/*countryLB = new ListBox();
 		countryLB.addChangeHandler(new countryLBChangeHandler());

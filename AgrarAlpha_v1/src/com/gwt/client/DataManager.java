@@ -27,22 +27,63 @@ public class DataManager {
 	}
 	
 	
-	public void getDataTable(String country, String product, String type){
+	private ArrayList<String> readDatabase(String query){
+		ArrayList<String> result = new ArrayList<String>();
+		// create the java statement
+		Statement st = null;
+		try {
+			st = conn.createStatement();
+			
+			// execute the query, and get a java resultset
+			ResultSet rs = null;
+			rs = st.executeQuery(query);
+					
+			// iterate through the java resultset
+			int i=0;
+				
+			while (rs.next())
+			{
+				String resultTemp = rs.getString("result");
+				result.add(i, resultTemp);
+				i++;
+			}
+		} 
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public DataTable[] getDataTable(String country, String product, String type){
 		// "null" nicht angegeben => nicht Beachtung der varaible 
 		//private DataTable TableDATA;
 		//-> siehe prepareData() VisualizationManager
 		//evt. absteigend nach jahr sortieren und über geben
+		
+		ArrayList<String> result = new ArrayList<String>();
+		DataTable[] DATA = new DataTable[0];
+		
+		connectToDatabase();
+		// if you only need a few columns, specify them by name instead of using "*"
+		
+		String query="null";
+		
 		if(country=="null"){// country=null when world is selected 
-				
+			
+			
+			query = "SELECT "+query+" distinct AreaName FROM agrar ORDER BY YEAR ASC";
 		}
 		if(product=="null"){
-			
+			query = "SELECT distinct AreaName FROM agrar WHERE Domain = Annual population";
 		}
 		if(type=="null"){
-			
+			query = "SELECT distinct AreaName FROM agrar WHERE Domain = Annual population";
 		}
 		
+		result = readDatabase(query);
 		
+		return DATA;
 		
 	}
 	
@@ -52,33 +93,12 @@ public class DataManager {
 		ArrayList<String> countries = new ArrayList<String>();
 		countries.add(0, "World");
 		
-		/*connectToDatabase();
+		connectToDatabase();
 		// if you only need a few columns, specify them by name instead of using "*"
 		String query = "SELECT distinct AreaName FROM agrar WHERE Domain = Annual population";
-	 
-		// create the java statement
-		Statement st = null;
-		try {
-			st = conn.createStatement();
-	       
-			// execute the query, and get a java resultset
-			ResultSet rs = null;
-			rs = st.executeQuery(query);
 		
-			// iterate through the java resultset
-			int i=0;
+		countries = readDatabase(query);
 		
-			while (rs.next())
-			{
-				String country = rs.getString("bal");
-				countries.add(i, country);
-				i++;
-			}
-		} 
-		catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
 		return (countries);
 	}
 	
