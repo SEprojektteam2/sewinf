@@ -1,16 +1,15 @@
 package com.gwt.client;
 
 import java.sql.*;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;/**/
 
-import com.google.gwt.visualization.client.DataTable;
 import com.gwt.client.MySQLConnection;
 import com.google.appengine.api.utils.SystemProperty;
 //import com.google.cloud.sql.jdbc.ResultSet;
-import com.mysql.jdbc.*;
+//import com.mysql.jdbc.*;
+import com.google.gwt.visualization.client.visualizations.*;
+import com.google.gwt.visualization.client.*;
+import com.google.gwt.visualization.client.AbstractDataTable.ColumnType;
+
 
 import java.util.ArrayList;
 
@@ -27,7 +26,7 @@ public class DataManager {
 	}
 	
 	private void calculateInterpolation(){
-		//evt. Klassse die die Berechnung übernimmt
+		//evt. Klassse die die Berechnung uebernimmt
 		//Achtung Zahl sind String
 	}
 	
@@ -49,8 +48,8 @@ public class DataManager {
 			while (rs.next())
 			{
 				String[] resultTemp = new String[3];
-				resultTemp[0] = rs.getString(searchingVar);
-				resultTemp[1] = rs.getString("Year");
+				resultTemp[0] = rs.getString("Year");
+				resultTemp[1] = rs.getString(searchingVar);
 				resultTemp[2] = rs.getString(outputVar);
 				result.add(i, resultTemp);
 				i++;
@@ -63,43 +62,95 @@ public class DataManager {
 		return result;
 	}
 	
-	public DataTable[] getDataTable(String country, String product, String type){
+	private int getCounter(String query){
+		Statement st = null;
+		int i=0;
+		try {
+			st = conn.createStatement();
+			
+			// execute the query, and get a java resultset
+			ResultSet rs = null;
+			rs = st.executeQuery(query);
+					
+			// iterate through the java resultset
+			
+				
+			while (rs.next())
+			{
+				i++;
+			}
+		} 
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return i;
+	}
+	
+	public DataTable getDataTable(String country, String product, String type){
 		// "null" nicht angegeben => nicht Beachtung der varaible 
 		//private DataTable TableDATA;
 		//-> siehe prepareData() VisualizationManager
-		//evt. absteigend nach jahr sortieren und über geben
-		// Achtung Import: Import Quantity gleich für Export!!!
+		//evt. absteigend nach jahr sortieren und ueber geben
+		// Achtung Import: Import Quantity gleich fuer Export!!!
 		
 		ArrayList<String[]> result = new ArrayList<String[]>();
-		DataTable[] DATA = new DataTable[0];
+		
 		
 		connectToDatabase();
 		
 		String query="null";
+		String query2="null";
 		String searchingVar="null";
 		String outputVar="null";
 		
+		int counter=0;
 		// country=null when world is selected and product is given and type is given => Output: Country + Year + Value
 		if(country=="null"){ 
 			query = "SELECT AreaName, Year, Value FROM agrar WHERE ElementName = '"+type+"' AND ItemName = '"+product+"' ORDER BY Year ASC";
+			query2 = "SELECT distinct AreaName FROM agrar WHERE ElementName = '"+type+"' AND ItemName = '"+product+"'";
+			counter=getCounter(query2);
 		}
 		//
 		if(product=="null"){
 			query = "SELECT ItemName, Year, Value FROM agrar WHERE ElementName = '"+type+"' AND AreaName = '"+country+"' ORDER BY Year ASC";
+			query2 = "SELECT distinct ItemName FROM agrar WHERE ElementName = '"+type+"' AND AreaName = '"+country+"'";
+			counter=getCounter(query2);
 		}
 		//
 		if(type=="null"){
 			query = "SELECT ElementName, Year, Value FROM agrar WHERE ItemName = '"+product+"' AND AreaName = '"+country+"' ORDER BY Year ASC";
+			query2 = "SELECT distinct ElementName FROM agrar WHERE ItemName = '"+product+"' AND AreaName = '"+country+"'";
+			counter=getCounter(query2);
 		}
 		
 		result = readDatabase(query,searchingVar,outputVar);
 		
+		DataTable DATA = DataTable.create();
+
+		//DATA.addColumn(ColumnType.STRING, "Year");
+		DATA.addColumn(ColumnType.STRING, searchingVar);
+		//DATA[i].addColumn(ColumnType.STRING, outputVar);
+			
+		DATA.addRows(counter);
+
+		for(int c = 0; c < DATA.getNumberOfRows(); c++ )
+		{
+			DATA.setCell(c, 0, TableDATA.getColumnLabel(c+1), TableDATA.getColumnLabel(c+1), null);
+			DATA.setCell(c, 1, TableDATA.getValueDouble(i, c+1), TableDATA.getFormattedValue(i, c+1), null);
+		}
+		
 		return DATA;
 		
+		//1990 Switzerland Output
+		//1991 Switzerland Output
+		//		Switzeland			
+		//1990	Output
+		//1991	Output
 	}
 	
 	public ArrayList<String> getCountries(){
-		//Array mit Strings als Rückgabe
+		//Array mit Strings als Rueckgabe
 		//limit 1 bei der Abfrage (entfernt die Dupletten)
 		ArrayList<String> countries = new ArrayList<String>();
 		//countries.add(0, "World");
