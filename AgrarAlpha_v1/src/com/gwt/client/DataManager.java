@@ -5,6 +5,7 @@ import java.sql.*;
 import com.google.gwt.visualization.client.DataTable;
 import com.gwt.server.MySQLConnection;
 import com.google.appengine.api.utils.SystemProperty;
+import com.mysql.jdbc.Connection;
 
 import java.util.ArrayList;
 
