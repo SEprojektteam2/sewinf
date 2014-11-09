@@ -20,6 +20,7 @@ private VerticalPanel vPanel = new VerticalPanel();
 		initWidget(this.vPanel);
 		this.main=main;
 		openBtn = new Button("Open");
+		openBtn.addClickHandler(new openClickHandler());
 		
 		homeBtn = new Button("AgrarAlpha");
 	    homeBtn.addClickHandler(new homeClickHandler());	
@@ -33,6 +34,14 @@ private VerticalPanel vPanel = new VerticalPanel();
 		@Override
 		public void onClick(ClickEvent event) {
 			main.openHomeView();
+			}
+		
+	}
+	private class openClickHandler implements ClickHandler{
+
+		@Override
+		public void onClick(ClickEvent event) {
+			main.openOpenView();
 			}
 		
 	}
