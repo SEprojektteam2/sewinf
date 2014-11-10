@@ -59,19 +59,20 @@ public class VisualizationManager {
 	{
 		
 		//For all other charts it's only possible to display 1 year with a few exceptions - those will have a separat DATAset when we implement them
-		DATA = new DataTable[20];
+		DATA = new DataTable[TableDATA.getNumberOfColumns()];
 		for(int i = 0; i < DATA.length; i++)
 		{
 			DATA[i] = DataTable.create();
 			DATA[i].addColumn(ColumnType.STRING, param1);
 			DATA[i].addColumn(ColumnType.NUMBER, param2);
 			
-			DATA[i].addRows(TableDATA.getNumberOfColumns()-1);
-			//
+			DATA[i].addRows(TableDATA.getNumberOfRows());
+			
+			//copy first column of TableDATA to DATA and the i+1 column to the second column of DATA
 			for(int c = 0; c < DATA[i].getNumberOfRows(); c++ )
 			{
-				DATA[i].setCell(c, 0, TableDATA.getColumnLabel(c+1), TableDATA.getColumnLabel(c+1), null);
-				DATA[i].setCell(c, 1, TableDATA.getValueDouble(i, c+1), TableDATA.getFormattedValue(i, c+1), null);
+				DATA[i].setCell(c, 0, TableDATA.getValueString(c, 0), TableDATA.getFormattedValue(c, 0), null);
+				DATA[i].setCell(c, 1, TableDATA.getValueDouble(c, i+1), TableDATA.getFormattedValue(c, i+1), null);
 			}
 		}
 		
