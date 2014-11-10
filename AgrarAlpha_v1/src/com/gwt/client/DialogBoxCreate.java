@@ -5,6 +5,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 
+//this class is a dialog which will appear, when the user wants to create an invalid option
 class DialogBoxCreate extends DialogBox {
 
     public DialogBoxCreate() {
