@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -30,44 +31,52 @@ import au.com.bytecode.opencsv.CSVReader;
 		@Override
 		public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 			PrintWriter out = resp.getWriter();
-			resp.setContentType("text/html");
+			
 			Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);
 			List<BlobKey> bkList = blobs.get("importCSV");
 			BlobKey blobKey = bkList.get(0);
 			BlobstoreInputStream blobStream = new BlobstoreInputStream(blobKey);
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(blobStream));
+			ArrayList<String[][]> arrays= new ArrayList<String[][]>(); 
+			CSVReader csvReader = null;
 			
 			MySQLConnection database = new MySQLConnection("173.194.253.240:3306","root","","agrar","agraralphav1:agrar");
 		    if(database.connect()){
 		    	out.println("<html><head></head><body>Connection Started</body></html>");
 		    }
 		    out.println("success");
-			out.flush();
-			
+			//out.flush();
+			//out.close();
+		    //TEst
 			Connection conn = database.returnConnection();
 			//Print out first line to check if BufferedReader is empty
 			while(bufferedReader.readLine() != null){
 			
 			//New CSVReader object reading from bufferedReader
-			CSVReader csvReader = new CSVReader(bufferedReader);
+			csvReader = new CSVReader(bufferedReader);
+			
 			
 			//Add csv-Fields to two-dimensional array 
 			List<String[]> rows = csvReader.readAll();
-			String output[][] =  rows.toArray(new String[rows.size()][]);
-			
+			//String output[][];
+			arrays.add(rows.toArray(new String[rows.size()][]));
+			}
 			//out.println(output.length + " " + rows.size() +" AND " + output[1].length);
-			blobstoreService.delete(blobKey);
 			
+			csvReader.close();
 			
 			String statement = "INSERT INTO records (domainCode, domain, areaCode, areaName, elementCode, elementName, itemCode, itemName, year, unit, value, flag, flagD) VALUES( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )";
-    		PreparedStatement stmt = null;
+    		for(int v = 0; v < arrays.size(); v++){
+			PreparedStatement stmt = null;
 			try {
 				stmt = conn.prepareStatement(statement);
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-    		csvReader.close();
+			
+			String[][] output = arrays.get(v);
+    		
 			for(int y = 1; y<output.length-2; y++){
 
 				  try {
@@ -96,8 +105,9 @@ import au.com.bytecode.opencsv.CSVReader;
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}}
+			
 			}
-		}
-			out.close();}
-	}
+			}
+		
 
