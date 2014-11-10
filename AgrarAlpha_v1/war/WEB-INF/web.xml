@@ -26,6 +26,18 @@
     <url-pattern>/HelloWorld/ImportHandlerServlet</url-pattern>
   </servlet-mapping>
   
+      <!-- Servlets -->
+  <servlet>
+    <servlet-name>DataManagerImpl</servlet-name>
+    <servlet-class>com.google.gwt.aerver.DataManagerImpl</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>DataManagerImp</servlet-name>
+    <url-pattern>/DataManager/try</url-pattern>
+  </servlet-mapping>
+  
+  
   
   
   <!-- Default page to serve -->
