@@ -160,7 +160,9 @@ public class SelectionView extends Composite {
 			s = "null";
 		return s;
 	}
-
+         /*handels the event when createBtn will get clicked
+         checks if requirements for creating are fullfilled
+          if they are, open the createView if not open an Dialog */
 	private class createClickHandler implements ClickHandler {
 
 		@Override
@@ -183,16 +185,16 @@ public class SelectionView extends Composite {
 		}
 
 	}
-//this changehandler will let a label appear when world is selected and dissapear when a country is selected
+//this changehandler will let a label appear when world is not selected and dissapear when a country is selected
 	private class countryLBChangeHandler implements ChangeHandler{
 
 		@Override
 		public void onChange(ChangeEvent event) {
-              if(countryLB.isItemSelected(0)){
-            	  fTable.setWidget(1,2,informationL);
+              if(!countryLB.isItemSelected(0)){ //checks if world is selected
+            	  fTable.setWidget(1,2,informationL); //add a lable
               }		
               else{
-            	  fTable.remove(informationL);
+            	  fTable.remove(informationL); //remove the lable
               }
 		}
 		
@@ -211,7 +213,7 @@ public class SelectionView extends Composite {
 /* this method handles the change of the selection in a listbox
  * if the user select an option in a listbox the checkbox will adapt*/
 		public void onChange(ChangeEvent event) {
-			if (countryLB.isItemSelected(0)) { //checks if world is chosen
+			if (!countryLB.isItemSelected(0)) { //checks if world is chosen
 
 				if (list.isItemSelected(0)) {//checks if the user has picked an option
 					if (box.getValue()) { // look if the checkbox is checked
@@ -261,7 +263,7 @@ public class SelectionView extends Composite {
 
 		@Override
 		public void onClick(ClickEvent event) {
-			if (countryLB.isItemSelected(0)) { //if world is selected the user is only allowed to choose one more parameter
+			if (!countryLB.isItemSelected(0)) { //if world is selected the user is only allowed to choose one more parameter
 				if (!(CBcounter < 1)) {  //checks if there is already one parameter chosen
 					box.setValue(false);
 				} else if (box.getValue()) {
