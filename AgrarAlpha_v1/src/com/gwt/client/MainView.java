@@ -61,7 +61,7 @@ public class MainView extends Composite {
 		MenuView menu = new MenuView(this);
 		rootPanel.add(menu);
 
-		selView = new SelectionView();
+		selView = new SelectionView(this);
 
 		contentPanel = new VerticalPanel();
 		contentPanel.add(selView);
