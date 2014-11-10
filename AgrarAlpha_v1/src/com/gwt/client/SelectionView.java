@@ -21,6 +21,7 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DialogBox;
+import com.google.gwt.visualization.client.DataTable;
 
 public class SelectionView extends Composite {
 
@@ -193,6 +194,22 @@ public class SelectionView extends Composite {
 			if(yearLB.isItemSelected(0) || CBcounter==0){
 				new DialogBoxCreate().show();
 			}
+			
+			else{
+				
+			}
+			
+			dataManagerSvc.getDataTable(getCountry(), getProduct(), getType(),
+					new AsyncCallback<DataTable>() {
+						public void onFailure(Throwable caught) {
+							// Show the RPC error message to the user
+							System.out.println("Error!");
+						}
+
+						public void onSuccess(DataTable resultTemp) {
+							
+						}
+					});
 			
 			// main.openCreateView(); // for testing checkbox behavior its in a comment
 
