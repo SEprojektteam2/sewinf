@@ -119,7 +119,7 @@ public class SelectionView extends Composite {
 
 		fTable.setWidget(1, 0, countryLabel);
 		fTable.setWidget(1, 1, countryLB);
-  	  fTable.setWidget(1,2,informationL);
+  	       // fTable.setWidget(1,2,informationL);
 
 
 		fTable.setWidget(2, 0, productCB);
