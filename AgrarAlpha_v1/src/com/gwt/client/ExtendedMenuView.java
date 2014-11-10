@@ -61,7 +61,7 @@ public class ExtendedMenuView extends Composite {
 		@Override
 		public void onClick(ClickEvent event) {
 			
-			main.openOpenView();
+			//main.openOpenView();
 			}
 		
 	}

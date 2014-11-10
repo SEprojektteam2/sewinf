@@ -2,7 +2,6 @@ package com.gwt.client;
 
 //package guiA.client;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.google.gwt.event.dom.client.ChangeEvent;
@@ -207,7 +206,8 @@ public class SelectionView extends Composite {
 						}
 
 						public void onSuccess(DataTable resultTemp) {
-							
+							VisualizationManager visMan= new VisualizationManager(resultTemp,getCountry(),getProduct(), getType(),getYear());
+							main.openCreateView(visMan);
 						}
 					});
 			

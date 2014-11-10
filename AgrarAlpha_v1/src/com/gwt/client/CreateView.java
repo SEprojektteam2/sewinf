@@ -23,10 +23,10 @@ public class CreateView extends Composite{
 
 	/* This class present the view the user has after he clicked the create button on mainView. it contains the graphics the user wants to see
 	 */
-	public CreateView(){
+	public CreateView(VisualizationManager visMan){
 		initWidget(this.basePanel);
 		
-		//VisMan = aVisManager;
+		this.VisMan = VisMan;
 		
 		source= new SourceView();
 		source.addSource("Source:...."); //add a source

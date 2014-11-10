@@ -44,7 +44,7 @@ private VerticalPanel vPanel = new VerticalPanel();
 
 		@Override
 		public void onClick(ClickEvent event) {
-			main.openOpenView();
+			//main.openOpenView();
 			}
 		
 	}

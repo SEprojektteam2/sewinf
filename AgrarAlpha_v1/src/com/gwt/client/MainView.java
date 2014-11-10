@@ -35,7 +35,7 @@ public class MainView extends Composite {
 	}
 
 	/* clears the panel and draw the open view */
-	public void openOpenView() {
+	/*public void openOpenView() {
 		rootPanel.clear();
 		contentPanel.clear();
 		ExtendedMenuView menu = new ExtendedMenuView(this);
@@ -44,15 +44,15 @@ public class MainView extends Composite {
 		//to be created appropriatly from database
 		VisualizationManager VisMan = null;
 		
-		CreateView cView= new CreateView();
+		CreateView cView= new CreateView(visMan);
 
 		OpenView oView = new OpenView();
 		contentPanel.add(oView);
 		rootPanel.add(contentPanel);
 
-		/* create openView */
+		//create openView 
 
-	}
+	}*/
 
 	/* clears the panel and draw the home view */
 	public void openHomeView(){
@@ -68,13 +68,13 @@ public class MainView extends Composite {
 		rootPanel.add(contentPanel);
 	}
 
-	public void openCreateView() {
+	public void openCreateView(VisualizationManager visMan) {
 		rootPanel.clear();
 		contentPanel.clear();
 		ExtendedMenuView menu = new ExtendedMenuView(this);
 		rootPanel.add(menu);
 		
-		CreateView cView = new CreateView();
+		CreateView cView = new CreateView(visMan);
 		contentPanel.add(cView);
 		rootPanel.add(contentPanel);
 	}
