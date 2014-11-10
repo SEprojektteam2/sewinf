@@ -17,11 +17,15 @@ public class CreateView extends Composite{
 	private VerticalPanel tablePanel = new VerticalPanel();
 	private VerticalPanel graphPanel = new VerticalPanel();
 	private VerticalPanel mapPanel = new VerticalPanel();
+	
+	private VisualizationManager VisMan;
 
 	/* This class present the view the user has after he clicked the create button on mainView. it contains the graphics the user wants to see
 	 */
-	public CreateView(){
+	public CreateView(VisualizationManager aVisManager){
 		initWidget(this.basePanel);
+		
+		VisMan = aVisManager;
 		
 		tablePanel = new VerticalPanel();
 		graphPanel = new VerticalPanel();
@@ -29,14 +33,14 @@ public class CreateView extends Composite{
         
 		/*only placeholer until we can fill with the acutal graphics from visalisationmanager.  will be removed later*/
 		String s="content from visualizationmanager"; 
-		Button b= new Button(s);  
-		tablePanel.add(new Button("Placeholder"));
+		  
+		tablePanel.add(VisMan.graphWidgets[0]);
 		
 		//adding table
 		//tablePanel.add(child);
 		
-		graphPanel.add(new Button("Apple"));
-		mapPanel.add(b);
+		graphPanel.add(new Button("to be implemented."));
+		mapPanel.add(VisMan.graphWidgets[1]);
 		
 		
 		basePanel.add(tablePanel,"Table");

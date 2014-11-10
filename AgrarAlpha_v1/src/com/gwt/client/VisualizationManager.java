@@ -1,5 +1,6 @@
 package com.gwt.client;
 
+import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.visualization.client.visualizations.*;
 import com.google.gwt.visualization.client.*;
 import com.google.gwt.visualization.client.AbstractDataTable.ColumnType;
@@ -19,6 +20,7 @@ public class VisualizationManager {
 	private String param2;
 	
 	Selectable[] graphs;
+	Widget[] graphWidgets;
 	//index 0 = Table --> always created
 	//index 1 = GeoMap --> only if no country was chosen
 	
@@ -81,14 +83,17 @@ public class VisualizationManager {
 	private void prepareGraphs()
 	{
 		graphs = new Selectable[2];
+		graphWidgets = new Widget[2];
 		
 		//table
 		Table table = new Table(TableDATA, null);
 		graphs[0] = table;
+		graphWidgets[0] = table.asWidget();
 		
 		//GeoMap
 		GeoMap map = new GeoMap(DATA[curYearIndex], null);
 		graphs[1] = map;
+		graphWidgets[1] = map.asWidget();
 	}
 		
 	//calculating the index which will represent the appropriate year
