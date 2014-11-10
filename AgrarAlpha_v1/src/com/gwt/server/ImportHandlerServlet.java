@@ -30,7 +30,7 @@ import au.com.bytecode.opencsv.CSVReader;
 		@Override
 		public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 			PrintWriter out = resp.getWriter();
-			
+			resp.setContentType("text/html");
 			Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);
 			List<BlobKey> bkList = blobs.get("importCSV");
 			BlobKey blobKey = bkList.get(0);
@@ -43,7 +43,7 @@ import au.com.bytecode.opencsv.CSVReader;
 		    }
 		    out.println("success");
 			out.flush();
-			out.close();
+			
 			Connection conn = database.returnConnection();
 			//Print out first line to check if BufferedReader is empty
 			while(bufferedReader.readLine() != null){
@@ -56,6 +56,8 @@ import au.com.bytecode.opencsv.CSVReader;
 			String output[][] =  rows.toArray(new String[rows.size()][]);
 			
 			//out.println(output.length + " " + rows.size() +" AND " + output[1].length);
+			blobstoreService.delete(blobKey);
+			
 			
 			String statement = "INSERT INTO records (domainCode, domain, areaCode, areaName, elementCode, elementName, itemCode, itemName, year, unit, value, flag, flagD) VALUES( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )";
     		PreparedStatement stmt = null;
@@ -95,6 +97,7 @@ import au.com.bytecode.opencsv.CSVReader;
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}}
+		}
+			out.close();}
 	}
 
