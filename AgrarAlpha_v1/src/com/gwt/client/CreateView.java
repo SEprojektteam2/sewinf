@@ -17,6 +17,7 @@ public class CreateView extends Composite{
 	private VerticalPanel tablePanel = new VerticalPanel();
 	private VerticalPanel graphPanel = new VerticalPanel();
 	private VerticalPanel mapPanel = new VerticalPanel();
+	private SourceView source;
 	
 	private VisualizationManager VisMan;
 
@@ -27,6 +28,9 @@ public class CreateView extends Composite{
 		
 		VisMan = aVisManager;
 		
+		source= new SourceView();
+		source.addSource("Source:...."); //add a source
+		
 		tablePanel = new VerticalPanel();
 		graphPanel = new VerticalPanel();
 		mapPanel = new VerticalPanel();
@@ -35,12 +39,16 @@ public class CreateView extends Composite{
 		String s="content from visualizationmanager"; 
 		  
 		tablePanel.add(VisMan.graphWidgets[0]);
+		tablePanel.add(source);
 		
 		//adding table
 		//tablePanel.add(child);
 		
 		graphPanel.add(new Button("to be implemented."));
+		graphPanel.add(source); // adding a verticalPanel with all source to the mapPanel
+		
 		mapPanel.add(VisMan.graphWidgets[1]);
+		mapPanel.add(source); // adding a verticalPanel with all source to the mapPanel
 		
 		
 		basePanel.add(tablePanel,"Table");
