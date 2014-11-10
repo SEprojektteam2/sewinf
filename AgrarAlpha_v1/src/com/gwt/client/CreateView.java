@@ -28,12 +28,12 @@ public class CreateView extends Composite{
 		
 		VisMan = aVisManager;
 		
-		source= new SourceView(); //A Panel which will contain labels with the source of the data
+		source= new SourceView();
 		source.addSource("Source:...."); //add a source
 		
-		tablePanel = new VerticalPanel(); // Panel where user see's the table, is in one of the tabs from tabpanel
-		graphPanel = new VerticalPanel(); // Panel where user see's the graph, is in one of the tabs from tabpanel
-		mapPanel = new VerticalPanel(); //Panel where user see's the map, is in one of the tabs from tabpanel
+		tablePanel = new VerticalPanel();
+		graphPanel = new VerticalPanel();
+		mapPanel = new VerticalPanel();
         
 		/*only placeholer until we can fill with the acutal graphics from visalisationmanager.  will be removed later*/
 		String s="content from visualizationmanager"; 
