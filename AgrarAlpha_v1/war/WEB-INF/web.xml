@@ -33,7 +33,7 @@
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>DataManagerImp</servlet-name>
+    <servlet-name>DataManagerImpl</servlet-name>
     <url-pattern>/DataManager/try</url-pattern>
   </servlet-mapping>
   
