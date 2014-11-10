@@ -23,10 +23,10 @@ public class CreateView extends Composite{
 
 	/* This class present the view the user has after he clicked the create button on mainView. it contains the graphics the user wants to see
 	 */
-	public CreateView(VisualizationManager aVisManager){
+	public CreateView(){
 		initWidget(this.basePanel);
 		
-		VisMan = aVisManager;
+		//VisMan = aVisManager;
 		
 		source= new SourceView();
 		source.addSource("Source:...."); //add a source
@@ -36,18 +36,25 @@ public class CreateView extends Composite{
 		mapPanel = new VerticalPanel();
         
 		/*only placeholer until we can fill with the acutal graphics from visalisationmanager.  will be removed later*/
-		String s="content from visualizationmanager"; 
+		Button message = new Button("To be implemented in a future sprint.");
+		message.setStyleName("message");
+		
+		
 		  
-		tablePanel.add(VisMan.graphWidgets[0]);
+		//tablePanel.add(VisMan.graphWidgets[0]);
+		tablePanel.add(message.asWidget());
 		tablePanel.add(source);
 		
 		//adding table
 		//tablePanel.add(child);
 		
-		graphPanel.add(new Button("to be implemented."));
+		
+	
+		graphPanel.add(message.asWidget());
 		graphPanel.add(source); // adding a verticalPanel with all source to the mapPanel
 		
-		mapPanel.add(VisMan.graphWidgets[1]);
+		//mapPanel.add(VisMan.graphWidgets[1]);
+		mapPanel.add(message.asWidget());
 		mapPanel.add(source); // adding a verticalPanel with all source to the mapPanel
 		
 		

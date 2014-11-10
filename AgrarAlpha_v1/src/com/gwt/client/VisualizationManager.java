@@ -1,5 +1,7 @@
 package com.gwt.client;
 
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.visualization.client.visualizations.*;
 import com.google.gwt.visualization.client.*;
@@ -90,10 +92,24 @@ public class VisualizationManager {
 		graphs[0] = table;
 		graphWidgets[0] = table.asWidget();
 		
-		//GeoMap
-		GeoMap map = new GeoMap(DATA[curYearIndex], null);
-		graphs[1] = map;
-		graphWidgets[1] = map.asWidget();
+		if(param1.equalsIgnoreCase("country"))
+		{
+			//GeoMap
+			GeoMap map = new GeoMap(DATA[curYearIndex], null);
+			graphs[1] = map;
+			graphWidgets[1] = map.asWidget();
+		}
+		else
+		{
+			graphs[1] = null;
+			notavailableMessage(1);
+		}
+	}
+
+	private void notavailableMessage(int index) {
+		Label message = new Label("Your chosen criteria doesn't allow this representation.");
+		graphWidgets[index] = message.asWidget();
+		message.setStyleName("message");
 	}
 		
 	//calculating the index which will represent the appropriate year
