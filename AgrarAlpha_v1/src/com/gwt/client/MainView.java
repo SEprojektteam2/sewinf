@@ -44,7 +44,7 @@ public class MainView extends Composite {
 		
 		VisualizationManager VisMan = null;
 		
-		CreateView cView= new CreateView();
+		CreateView cView= new CreateView(VisMan);
 
 		OpenView oView = new OpenView();
 		contentPanel.add(oView);
@@ -73,7 +73,7 @@ public class MainView extends Composite {
 		contentPanel.clear();
 		ExtendedMenuView menu = new ExtendedMenuView(this);
 		rootPanel.add(menu);
-		CreateView cView = new CreateView();
+		CreateView cView = new CreateView(null);
 		contentPanel.add(cView);
 		rootPanel.add(contentPanel);
 	}
