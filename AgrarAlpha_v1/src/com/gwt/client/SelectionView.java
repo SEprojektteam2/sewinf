@@ -112,11 +112,11 @@ public class SelectionView extends Composite {
 				});
 	
 		
-		countryLB = new ListBox();
+		/*countryLB = new ListBox();
 		countryLB.addChangeHandler(new countryLBChangeHandler());
 		countryLB.addItem("World");
 		countryLB.addItem("Switzerland");
-		countryLB.addItem("Germany");
+		countryLB.addItem("Germany");*/
 
 		productLB = new ListBox();
 		productLB.addItem(" ");
