@@ -1,5 +1,26 @@
 /** Add css rules here for your application. */
 
+.homeBtn{
+	background-color: #dadbfe;
+	border-bottom: 1px solid #0041ab;
+	height: 50px;
+	width: 100px;
+	font-weight: bold;
+}
+
+.otherBtn{
+	background-color: white;
+	border-bottom: 1px solid #0041ab;
+	height: 40px;
+	width: 100px;
+}
+
+.verticalPanel{
+	width: 100px;
+	border-right: 1px solid #0041ab;
+	align: center top;
+	height: 1000px;
+}
 
 /** Example rules used by the template application (remove for your app) */
 h1 {

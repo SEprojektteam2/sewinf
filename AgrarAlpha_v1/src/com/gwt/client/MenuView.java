@@ -21,12 +21,15 @@ private VerticalPanel vPanel = new VerticalPanel();
 		this.main=main;
 		openBtn = new Button("Open");
 		openBtn.addClickHandler(new openClickHandler());
+		openBtn.addStyleName("otherBtn");
 		
 		homeBtn = new Button("AgrarAlpha");
-	    homeBtn.addClickHandler(new homeClickHandler());	
+	    homeBtn.addClickHandler(new homeClickHandler());
+	    homeBtn.addStyleName("homeBtn");
 		
 		this.vPanel.add(homeBtn);
 		this.vPanel.add(openBtn);
+		vPanel.addStyleName("verticalPanel");
 		}
 	
 	private class homeClickHandler implements ClickHandler{
