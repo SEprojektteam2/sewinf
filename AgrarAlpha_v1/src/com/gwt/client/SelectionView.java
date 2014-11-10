@@ -198,7 +198,7 @@ public class SelectionView extends Composite {
 				
 			}
 			
-			dataManagerSvc.getDataTable(getCountry(), getProduct(), getType(),
+			/*dataManagerSvc.getDataTable(getCountry(), getProduct(), getType(),
 					new AsyncCallback<DataTable>() {
 						public void onFailure(Throwable caught) {
 							// Show the RPC error message to the user
@@ -210,7 +210,7 @@ public class SelectionView extends Composite {
 							main.openCreateView(visMan);
 						}
 					});
-			
+			*/
 			// main.openCreateView(); // for testing checkbox behavior its in a comment
 
 			/*
