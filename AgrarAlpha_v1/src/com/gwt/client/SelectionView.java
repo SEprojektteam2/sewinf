@@ -18,6 +18,9 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.DialogBox;
 
 public class SelectionView extends Composite {
 
@@ -47,7 +50,8 @@ public class SelectionView extends Composite {
 	private int lastyear = 2010; // last year we got data
 	private int CBcounter = 0; //counter how many checkboxes are checked
 	private DataManager data;
-
+	
+	private DataManagerServiceAsync dataManagerSvc = GWT.create(DataManagerService.class);
 	/*
 	 * This class is drawing the options, the user can choose from. The
 	 * RootPanel is a FlexTable (Table with flexible size)
@@ -89,6 +93,24 @@ public class SelectionView extends Composite {
 			String country=(String) cArray.get(j); 
 			countryLB.addItem(country); 
 		}*/
+		
+		dataManagerSvc.getCountries(
+				new AsyncCallback<ArrayList<String>>() {
+					public void onFailure(Throwable caught) {
+						// Show the RPC error message to the user
+						System.out.println("Error!");
+					}
+
+					public void onSuccess(ArrayList<String> resultTemp) {
+						countryLB = new ListBox();
+						countryLB.addChangeHandler(new countryLBChangeHandler());
+						for(int j=0;j<resultTemp.size();j++) {
+							String country=(String) resultTemp.get(j); 
+							countryLB.addItem(country); 
+						}
+					}
+				});
+	
 		
 		countryLB = new ListBox();
 		countryLB.addChangeHandler(new countryLBChangeHandler());
