@@ -27,20 +27,25 @@ public class ExtendedMenuView extends Composite {
 		
 		openBtn = new Button("Open");
 		openBtn.addClickHandler(new openClickHandler());
+		openBtn.addStyleName("otherBtn");
 
 
 		changeBtn = new Button("Change");
 		changeBtn.addClickHandler(new changeClickHandler());
+		changeBtn.addStyleName("otherBtn");
 
 		saveBtn = new Button("Save");
 		saveBtn.addClickHandler(new saveClickHandler());
+		saveBtn.addStyleName("otherBtn");
 
 		exportBtn = new Button("Export");
 		exportBtn.addClickHandler(new exportClickHandler());
+		exportBtn.addStyleName("otherBtn");
 
 		
 		homeBtn = new Button("AgrarAlpha");
 		homeBtn.addClickHandler(new homeClickHandler());
+		homeBtn.addStyleName("homeBtn");
 		
 		this.vPanel.add(homeBtn);
 		this.vPanel.add(changeBtn);
@@ -55,6 +60,7 @@ public class ExtendedMenuView extends Composite {
 
 		@Override
 		public void onClick(ClickEvent event) {
+			
 			main.openOpenView();
 			}
 		
