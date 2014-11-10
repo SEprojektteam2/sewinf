@@ -2,8 +2,9 @@
 
 .homeBtn{
 	background-color: #dadbfe;
-	border-bottom: 1px solid #0041ab;
 	border: none;
+	border-bottom: 1px solid #0041ab;
+	font-size: 15pt;
 	height: 50px;
 	width: 100px;
 	font-weight: bold;
@@ -11,8 +12,8 @@
 
 .otherBtn{
 	background-color: white;
-	border-bottom: 1px solid #0041ab;
 	border: none;
+	border-bottom: 1px solid #0041ab;
 	height: 40px;
 	width: 100px;
 }
