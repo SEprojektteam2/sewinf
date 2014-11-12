@@ -107,10 +107,18 @@ public class SelectionView extends Composite {
 						for(int j=0;j<resultTemp.size();j++) {
 							String country=(String) resultTemp.get(j); 
 							countryLB.addItem(country); 
+							System.out.println("2");
 						}
 					}
 				});
-	
+		/*ArrayList<String> countries = new ArrayList<String>();
+		countries.add(0, "World");
+		countryLB = new ListBox();
+		countryLB.addChangeHandler(new countryLBChangeHandler());
+		for(int j=0;j<countries.size();j++) {
+			String country=(String) countries.get(j); 
+			countryLB.addItem(country); 
+		}*/
 		
 		/*countryLB = new ListBox();
 		countryLB.addChangeHandler(new countryLBChangeHandler());
@@ -209,8 +217,8 @@ public class SelectionView extends Composite {
 							VisualizationManager visMan= new VisualizationManager(resultTemp,getCountry(),getProduct(), getType(),getYear());
 							main.openCreateView(visMan);
 						}
-					});
-			*/
+					});*/
+			
 			// main.openCreateView(); // for testing checkbox behavior its in a comment
 
 			/*

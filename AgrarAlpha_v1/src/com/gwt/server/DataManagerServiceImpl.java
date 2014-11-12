@@ -1,8 +1,10 @@
 package com.gwt.server;
 
 import java.sql.*;
-import java.util.ArrayList;
 
+
+
+import java.util.ArrayList;
 import com.gwt.client.MySQLConnection;
 import com.google.appengine.api.utils.SystemProperty;
 import com.google.gwt.visualization.client.*;
@@ -10,6 +12,7 @@ import com.google.gwt.visualization.client.AbstractDataTable.ColumnType;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.gwt.client.DataManagerService;
 
+@SuppressWarnings("serial")
 public class DataManagerServiceImpl extends RemoteServiceServlet implements
 		DataManagerService {
 		
@@ -30,7 +33,7 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 		ArrayList<String> countries = new ArrayList<String>();
 		//countries.add(0, "World");
 		
-		connectToDatabase();
+		/*connectToDatabase();
 		// if you only need a few columns, specify them by name instead of using "*"
 		String query = "SELECT distinct AreaName FROM agrar WHERE Domain = 'Annual population'";
 		
@@ -56,7 +59,7 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 				
 		return (countries);
 	}	
