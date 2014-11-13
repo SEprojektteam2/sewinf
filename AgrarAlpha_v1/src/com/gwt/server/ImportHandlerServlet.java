@@ -57,7 +57,7 @@ import au.com.bytecode.opencsv.CSVReader;
 		    //TEst
 			Connection conn = database.returnConnection();
 			//Print out first line to check if BufferedReader is empty
-			while(bufferedReader.readLine() != null){
+			while(bufferedReader.read() != -1){
 			
 			//New CSVReader object reading from bufferedReader
 			csvReader = new CSVReader(bufferedReader);
