@@ -28,13 +28,13 @@
   
       <!-- Servlets -->
   <servlet>
-    <servlet-name>DataManagerImpl</servlet-name>
-    <servlet-class>com.google.gwt.aerver.DataManagerImpl</servlet-class>
+    <servlet-name>DataManagerServiceImpl</servlet-name>
+    <servlet-class>com.google.gwt.server.DataManagerServiceImpl</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>DataManagerImpl</servlet-name>
-    <url-pattern>/DataManager/try</url-pattern>
+    <servlet-name>DataManagerServiceImpl</servlet-name>
+    <url-pattern>/agraralpha_v1/try</url-pattern>
   </servlet-mapping>
   
   

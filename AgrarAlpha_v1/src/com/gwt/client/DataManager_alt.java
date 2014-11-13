@@ -3,10 +3,10 @@ package com.gwt.client;
 import java.sql.*;
 
 import com.gwt.client.MySQLConnection;
-import com.google.appengine.api.utils.SystemProperty;
+//import com.google.appengine.api.utils.SystemProperty;
 //import com.google.cloud.sql.jdbc.ResultSet;
 //import com.mysql.jdbc.*;
-import com.google.gwt.visualization.client.visualizations.*;
+//import com.google.gwt.visualization.client.visualizations.*;
 import com.google.gwt.visualization.client.*;
 import com.google.gwt.visualization.client.AbstractDataTable.ColumnType;
 
@@ -26,10 +26,10 @@ public class DataManager_alt {
 	    conn = database.returnConnection();
 	}
 	
-	private void calculateInterpolation(){
+	/*private void calculateInterpolation(){
 		//evt. Klassse die die Berechnung uebernimmt
 		//Achtung Zahl sind String
-	}
+	}*/
 	
 	
 	private ArrayList<String[]> readDatabase(String query, String searchingVar, String outputVar){

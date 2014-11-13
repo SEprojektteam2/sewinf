@@ -1,11 +1,11 @@
 package com.gwt.client;
-import java.util.ArrayList;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.rpc.AsyncCallback;
-import java.io.Serializable;
+//import java.util.ArrayList;
+//import com.google.gwt.core.client.GWT;
+//import com.google.gwt.user.client.rpc.AsyncCallback;
+//import java.io.Serializable;
 
-public class DataManager implements Serializable{
-	/*private DataManagerServiceAsync dataManagerSvc = GWT.create(DataManagerService.class);
+/*public class DataManager implements Serializable{
+	private DataManagerServiceAsync dataManagerSvc = GWT.create(DataManagerService.class);
 	private ArrayList<String> result;
 	public ArrayList<String> getCountries() {
 		
@@ -28,6 +28,6 @@ public class DataManager implements Serializable{
 	    // Make the call to the stock price service.
 	    dataManagerSvc.getCountries(callback);
 	    return result;
-	  }*/
+	  }
 	
-}
+}*/

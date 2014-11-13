@@ -2,7 +2,7 @@ package com.gwt.client;
 import java.util.ArrayList;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.visualization.client.DataTable;
+//import com.google.gwt.visualization.client.DataTable;
 
 public interface DataManagerServiceAsync {
 	void getCountries(AsyncCallback<ArrayList<String>> callback) throws IllegalArgumentException;

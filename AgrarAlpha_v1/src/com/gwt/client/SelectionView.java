@@ -21,8 +21,9 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.visualization.client.DataTable;
+import java.io.Serializable;
 
-public class SelectionView extends Composite {
+public class SelectionView extends Composite implements Serializable{
 
 	private Label yearLabel;
 	private Label countryLabel;
@@ -49,7 +50,7 @@ public class SelectionView extends Composite {
 	
 	private int lastyear = 2010; // last year we got data
 	private int CBcounter = 0; //counter how many checkboxes are checked
-	private DataManager data;
+	//private DataManager data;
 	
 	private DataManagerServiceAsync dataManagerSvc = GWT.create(DataManagerService.class);
 	/*

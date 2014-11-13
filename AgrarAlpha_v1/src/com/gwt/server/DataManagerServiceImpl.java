@@ -6,7 +6,7 @@ import java.sql.*;
 
 import java.util.ArrayList;
 import com.gwt.client.MySQLConnection;
-import com.google.appengine.api.utils.SystemProperty;
+//import com.google.appengine.api.utils.SystemProperty;
 import com.google.gwt.visualization.client.*;
 import com.google.gwt.visualization.client.AbstractDataTable.ColumnType;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
@@ -31,7 +31,7 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 		//Array mit Strings als Rueckgabe
 		//limit 1 bei der Abfrage (entfernt die Dupletten)
 		ArrayList<String> countries = new ArrayList<String>();
-		//countries.add(0, "World");
+		countries.add(0, "World");
 		
 		/*connectToDatabase();
 		// if you only need a few columns, specify them by name instead of using "*"
@@ -185,10 +185,10 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 	}
 		
 
-	private void calculateInterpolation(){
+	/*private void calculateInterpolation(){
 		//evt. Klassse die die Berechnung uebernimmt
 		//Achtung Zahl sind String
-	}
+	}*/
 		
 }	
 	
