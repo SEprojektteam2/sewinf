@@ -68,7 +68,7 @@ import au.com.bytecode.opencsv.CSVReader;
 			arrays.add(rows.toArray(new String[rows.size()][]));
 			}
 			//out.println(output.length + " " + rows.size() +" AND " + output[1].length);
-			
+			///:)
 			csvReader.close();
 			 out.println("success");
 				//out.flush();
@@ -89,7 +89,7 @@ import au.com.bytecode.opencsv.CSVReader;
     		
 			  String output[][] = arrays.get(v);
 			
-				for(int y = 1; y<output.length-2; y++){
+				for(int y = 0; y<output.length-2; y++){
 
 					  try {
 						stmt.setString(1, output[y][0]);
