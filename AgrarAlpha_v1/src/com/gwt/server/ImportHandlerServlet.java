@@ -89,7 +89,7 @@ import au.com.bytecode.opencsv.CSVReader;
     		
 			  String output[][] = arrays.get(v);
 			
-				for(int y = 1; y<output.length-2; y++){
+				for(int y = 0; y<output.length-2; y++){
 
 					  try {
 						stmt.setString(1, output[y][0]);
