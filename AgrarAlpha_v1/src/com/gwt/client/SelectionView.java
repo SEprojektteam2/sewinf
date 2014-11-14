@@ -48,7 +48,7 @@ public class SelectionView extends Composite implements Serializable{
 	private MainView main;
 
 	
-	private int lastyear = 2010; // last year we got data
+	private int lastyear = 2011; // last year we got data
 	private int CBcounter = 0; //counter how many checkboxes are checked
 	//private DataManager data;
 	
