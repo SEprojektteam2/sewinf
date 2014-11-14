@@ -24,7 +24,7 @@ public class VisualizationManager {
 	private String param2;
 	
 	private Selectable[] graphs;
-	private Widget[] graphWidgets;
+	public Widget[] graphWidgets;
 	//index 0 = Table --> always created
 	//index 1 = GeoMap --> only if no country was chosen
 	

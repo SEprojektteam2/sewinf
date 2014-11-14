@@ -41,8 +41,8 @@ public class CreateView extends Composite{
 		
 		
 		  
-		//tablePanel.add(VisMan.graphWidgets[0]);
-		tablePanel.add(message.asWidget());
+		tablePanel.add(VisMan.graphWidgets[0]);
+		
 		tablePanel.add(source);
 		
 		//adding table
@@ -51,10 +51,10 @@ public class CreateView extends Composite{
 		
 	
 		graphPanel.add(message.asWidget());
-		graphPanel.add(source); // adding a verticalPanel with all source to the mapPanel
+		//graphPanel.add(source); // adding a verticalPanel with all source to the mapPanel
 		
-		//mapPanel.add(VisMan.graphWidgets[1]);
-		mapPanel.add(message.asWidget());
+		mapPanel.add(VisMan.graphWidgets[1]);
+		//mapPanel.add(message.asWidget());
 		mapPanel.add(source); // adding a verticalPanel with all source to the mapPanel
 		
 		
