@@ -47,18 +47,18 @@ public class DataPreparationTest extends GWTTestCase {
 	@Test
 	public void testPrepareData() {
 		
-		VisualizationManager.TableDATA = data;
-		VisualizationManager.prepareData();
+		VisualizationManager_v2.TableDATA = data;
+		VisualizationManager_v2.prepareData();
 		
-		assertEquals(data.getNumberOfColumns(), VisualizationManager.DATA.length);
-		assertEquals(data.getNumberOfRows(), VisualizationManager.DATA[VisualizationManager.DATA.length-1].getNumberOfRows());
+		assertEquals(data.getNumberOfColumns(), VisualizationManager_v2.DATA.size());
+		assertEquals(data.getNumberOfRows(), VisualizationManager_v2.DATA.get(VisualizationManager_v2.DATA.size()-1).getNumberOfRows());
 		
 		//check all Cells for equality
 		for(int i = 0; i < data.getNumberOfColumns()-1; i++)
 		{
 			for(int j = 0; j < data.getNumberOfRows(); j++)
 			{
-				String test1 = VisualizationManager.DATA[i].getFormattedValue(j, 0);
+				String test1 = VisualizationManager_v2.DATA.get(i).getFormattedValue(j, 0);
 				String tested1 = data.getFormattedValue(j, i+1);
 				assertEquals(tested1, test1);
 			}

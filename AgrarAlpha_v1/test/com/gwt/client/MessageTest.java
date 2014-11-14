@@ -17,15 +17,15 @@ public class MessageTest extends GWTTestCase{
 		Label tested = new Label("message");
 		tested.setStyleName("message");
 		
-		VisualizationManager.notavailableMessage(0);
-		assertEquals(tested.getStyleName(), VisualizationManager.graphWidgets[0].getStyleName());
-		assertEquals(tested.getClass(), VisualizationManager.graphWidgets[0].getClass());
-		assertEquals(tested.getTitle(), VisualizationManager.graphWidgets[0].getTitle());
+		VisualizationManager_v2.notavailableMessage(0);
+		assertEquals(tested.getStyleName(), VisualizationManager_v2.graphWidgets[0].getStyleName());
+		assertEquals(tested.getClass(), VisualizationManager_v2.graphWidgets[0].getClass());
+		assertEquals(tested.getTitle(), VisualizationManager_v2.graphWidgets[0].getTitle());
 		
-		VisualizationManager.notavailableMessage(1);
-		assertEquals(tested.getStyleName(), VisualizationManager.graphWidgets[0].getStyleName());
-		assertEquals(tested.getClass(), VisualizationManager.graphWidgets[0].getClass());
-		assertEquals(tested.getTitle(), VisualizationManager.graphWidgets[0].getTitle());
+		VisualizationManager_v2.notavailableMessage(1);
+		assertEquals(tested.getStyleName(), VisualizationManager_v2.graphWidgets[0].getStyleName());
+		assertEquals(tested.getClass(), VisualizationManager_v2.graphWidgets[0].getClass());
+		assertEquals(tested.getTitle(), VisualizationManager_v2.graphWidgets[0].getTitle());
 		
 	}
 

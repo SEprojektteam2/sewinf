@@ -27,7 +27,7 @@
   </servlet-mapping>
   
       <!-- Servlets -->
-  <servlet>
+ <!--  <servlet>
     <servlet-name>DataManagerServiceImpl</servlet-name>
     <servlet-class>com.google.gwt.server.DataManagerServiceImpl</servlet-class>
   </servlet>
@@ -36,7 +36,7 @@
     <servlet-name>DataManagerServiceImpl</servlet-name>
     <url-pattern>/agraralpha_v1/try</url-pattern>
   </servlet-mapping>
-  
+   -->
   
   
   

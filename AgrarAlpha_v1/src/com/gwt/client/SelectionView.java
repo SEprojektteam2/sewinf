@@ -52,7 +52,7 @@ public class SelectionView extends Composite implements Serializable{
 	private int CBcounter = 0; //counter how many checkboxes are checked
 	//private DataManager data;
 	
-	private DataManagerServiceAsync dataManagerSvc = GWT.create(DataManagerService.class);
+	//private DataManagerServiceAsync dataManagerSvc = GWT.create(DataManagerService.class);
 	/*
 	 * This class is drawing the options, the user can choose from. The
 	 * RootPanel is a FlexTable (Table with flexible size)
@@ -204,7 +204,12 @@ public class SelectionView extends Composite implements Serializable{
 			}
 			
 			else{
+				DataManager manager = new DataManager();
 				
+				
+				
+				VisualizationManager vis= new VisualizationManager(manager.setUpStaticData(), "world", "apple", "conpumtion", "2010");
+				main.openCreateView(vis);
 			}
 			
 			/*dataManagerSvc.getDataTable(getCountry(), getProduct(), getType(),
@@ -219,12 +224,7 @@ public class SelectionView extends Composite implements Serializable{
 							main.openCreateView(visMan);
 						}
 					});*/
-			DataManager manager = new DataManager();
-			
-			
-			
-			VisualizationManager vis= new VisualizationManager(manager.setUpStaticData(), "world", "apple", "conpumtion", "2010");
-			main.openCreateView(vis); // for testing checkbox behavior its in a comment
+			 // for testing checkbox behavior its in a comment
 
 			/*
 			 * only for testing get methodes test1=new Label(getYear());

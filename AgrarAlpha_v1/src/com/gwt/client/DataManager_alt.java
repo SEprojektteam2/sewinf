@@ -1,4 +1,4 @@
-package com.gwt.client;
+/*package com.gwt.client;
 
 import java.sql.*;
 
@@ -26,10 +26,10 @@ public class DataManager_alt {
 	    conn = database.returnConnection();
 	}
 	
-	/*private void calculateInterpolation(){
+	private void calculateInterpolation(){
 		//evt. Klassse die die Berechnung uebernimmt
 		//Achtung Zahl sind String
-	}*/
+	}
 	
 	
 	private ArrayList<String[]> readDatabase(String query, String searchingVar, String outputVar){
@@ -198,3 +198,4 @@ public class DataManager_alt {
 	
 	
 }
+*/
