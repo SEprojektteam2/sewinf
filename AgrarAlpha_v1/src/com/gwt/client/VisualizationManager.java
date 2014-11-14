@@ -23,14 +23,25 @@ public class VisualizationManager {
 	private String param1;
 	private String param2;
 	
-	Selectable[] graphs;
-	Widget[] graphWidgets;
+	private Selectable[] graphs;
+	private Widget[] graphWidgets;
 	//index 0 = Table --> always created
 	//index 1 = GeoMap --> only if no country was chosen
 	
 	
 	//Constructor
 	public VisualizationManager(DataTable aTableDATA, String country, String product, String type, String year)
+	{
+		setParameters(country, product, type);
+		
+		TableDATA = aTableDATA;
+		
+		setCurYearIndex(year);
+		prepareData();
+		
+	}
+	
+	void setParameters(String country, String product, String type)
 	{
 		String firstParameter;
 		String secondParameter;
@@ -51,15 +62,10 @@ public class VisualizationManager {
 			secondParameter = country + " " + product;
 		}
 
-		
-		TableDATA = aTableDATA;
 		setParam1(firstParameter);
 		setParam2(secondParameter);
-
-		setCurYearIndex(year);
-		prepareData();
-		
 	}
+
 	
 	private void prepareData()
 	{
