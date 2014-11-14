@@ -199,18 +199,18 @@ public class SelectionView extends Composite implements Serializable{
 		@Override
 		public void onClick(ClickEvent event) {
 			 // dialog appears when user wants to create an invalid selection 
-			if(yearLB.isItemSelected(0) || CBcounter==0){
+			/*if(yearLB.isItemSelected(0) || CBcounter==0){
 				new DialogBoxCreate().show();
 			}
 			
-			else{
+			else{*/
 				DataManager manager = new DataManager();
 				
 				
 				
 				VisualizationManager vis= new VisualizationManager(manager.setUpStaticData(), "world", "apple", "conpumtion", "2010");
 				main.openCreateView(vis);
-			}
+			//}
 			
 			/*dataManagerSvc.getDataTable(getCountry(), getProduct(), getType(),
 					new AsyncCallback<DataTable>() {
