@@ -94,7 +94,7 @@ public class SelectionView extends Composite implements Serializable{
 			String country=(String) cArray.get(j); 
 			countryLB.addItem(country); 
 		}*/
-		
+		/*
 		dataManagerSvc.getCountries(
 				new AsyncCallback<ArrayList<String>>() {
 					public void onFailure(Throwable caught) {
@@ -111,7 +111,7 @@ public class SelectionView extends Composite implements Serializable{
 							System.out.println("2");
 						}
 					}
-				});
+				});*/
 		/*ArrayList<String> countries = new ArrayList<String>();
 		countries.add(0, "World");
 		countryLB = new ListBox();
@@ -124,8 +124,8 @@ public class SelectionView extends Composite implements Serializable{
 		countryLB = new ListBox();
 		countryLB.addChangeHandler(new countryLBChangeHandler());
 		countryLB.addItem("World");
-		countryLB.addItem("Switzerland");
-		countryLB.addItem("Germany");
+		//countryLB.addItem("Switzerland");
+		//countryLB.addItem("Germany");
 
 		productLB = new ListBox();
 		productLB.addItem(" ");
