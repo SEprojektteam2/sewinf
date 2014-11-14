@@ -6,6 +6,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.visualization.client.visualizations.*;
+import com.google.gwt.visualization.client.visualizations.Table.Options;
 import com.google.gwt.visualization.client.*;
 import com.google.gwt.visualization.client.AbstractDataTable.ColumnType;
 
@@ -67,6 +68,7 @@ public class VisualizationManager {
 	}
 
 	
+	
 	private void prepareData()
 	{
 		
@@ -90,22 +92,43 @@ public class VisualizationManager {
 		
 	}
 	
+	
+	private Table.Options createTableOptions() 
+	{
+	    Table.Options options = Options.create();
+	    options.setWidth("400");
+	    options.setHeight("240");
+	    return options;
+	}
+
+	private GeoMap.Options createMapOptions()
+	{
+		GeoMap.Options options = GeoMap.Options.create();
+		options.setWidth("400");
+		options.setHeight("240");
+		return options;
+	}
+	
 	private void prepareGraphs()
 	{
 		graphs = new Selectable[2];
 		graphWidgets = new Widget[2];
 		
 		//table
-		Table table = new Table(TableDATA, null);
+		Table table = new Table();
+		table.draw(TableDATA, createTableOptions());
 		graphs[0] = table;
 		graphWidgets[0] = table.asWidget();
+	
 		
 		if(param1.equalsIgnoreCase("country"))
 		{
 			//GeoMap
-			GeoMap map = new GeoMap(DATA.get(curYearIndex), null);
+			GeoMap map = new GeoMap();
+			map.draw(DATA.get(curYearIndex), createMapOptions());
 			graphs[1] = map;
 			graphWidgets[1] = map.asWidget();
+			
 		}
 		else
 		{
