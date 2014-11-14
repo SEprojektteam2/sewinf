@@ -205,10 +205,7 @@ public class SelectionView extends Composite implements Serializable{
 			
 			else{*/
 				DataManager manager = new DataManager();
-				
-				
-				
-				VisualizationManager vis= new VisualizationManager(manager.setUpStaticData(), "world", "apple", "conpumtion", "2010");
+				VisualizationManager vis= new VisualizationManager(manager.setUpStaticData(), "world", "apple", "consumption", "2010");
 				main.openCreateView(vis);
 			//}
 			

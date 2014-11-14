@@ -26,7 +26,7 @@ public class CreateView extends Composite{
 	public CreateView(VisualizationManager visMan){
 		initWidget(this.basePanel);
 		
-		this.VisMan = VisMan;
+		this.VisMan = visMan;
 		
 		source= new SourceView();
 		source.addSource("Source:...."); //add a source
