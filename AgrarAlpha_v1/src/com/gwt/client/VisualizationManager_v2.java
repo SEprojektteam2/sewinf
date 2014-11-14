@@ -125,6 +125,10 @@ public class VisualizationManager_v2 {
 		int index = -1;
 		
 		int yInd = Integer.parseInt(year);
+		
+		if(yInd < 1990 || yInd > 2011)
+			return -1;
+		
 		yInd -= MAX_YEAR;
 		
 		index = Math.abs(yInd); 
