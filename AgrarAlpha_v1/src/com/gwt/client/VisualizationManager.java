@@ -24,8 +24,8 @@ public class VisualizationManager {
 	private String param1;
 	private String param2;
 	
-	private Selectable[] graphs;
-	public Widget[] graphWidgets;
+	private ArrayList<Selectable> graphs;
+	public ArrayList<Widget> graphWidgets;
 	//index 0 = Table --> always created
 	//index 1 = GeoMap --> only if no country was chosen
 	
@@ -111,14 +111,14 @@ public class VisualizationManager {
 	
 	private void prepareGraphs()
 	{
-		graphs = new Selectable[2];
-		graphWidgets = new Widget[2];
+		graphs = new ArrayList<Selectable>(2);
+		graphWidgets = new ArrayList<Widget>(2);
 		
 		//table
 		Table table = new Table();
 		table.draw(TableDATA, createTableOptions());
-		graphs[0] = table;
-		graphWidgets[0] = table.asWidget();
+		graphs.add(0, table);
+		graphWidgets.add(0, table.asWidget());
 	
 		
 		if(param1.equalsIgnoreCase("country"))
@@ -126,20 +126,20 @@ public class VisualizationManager {
 			//GeoMap
 			GeoMap map = new GeoMap();
 			map.draw(DATA.get(curYearIndex), createMapOptions());
-			graphs[1] = map;
-			graphWidgets[1] = map.asWidget();
+			graphs.add(1, map);
+			graphWidgets.add(1, map.asWidget());
 			
 		}
 		else
 		{
-			graphs[1] = null;
+			graphs.add(1, null);
 			notavailableMessage(1);
 		}
 	}
 
 	private void notavailableMessage(int index) {
 		Label message = new Label("Your chosen criteria doesn't allow this representation.");
-		graphWidgets[index] = message.asWidget();
+		graphWidgets.add(index, message.asWidget());
 		message.setStyleName("message");
 	}
 		
