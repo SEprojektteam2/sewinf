@@ -219,8 +219,12 @@ public class SelectionView extends Composite implements Serializable{
 							main.openCreateView(visMan);
 						}
 					});*/
+			DataManager manager = new DataManager();
 			
-			// main.openCreateView(); // for testing checkbox behavior its in a comment
+			
+			
+			VisualizationManager vis= new VisualizationManager(manager.setUpStaticData(), "world", "apple", "conpumtion", "2010");
+			main.openCreateView(vis); // for testing checkbox behavior its in a comment
 
 			/*
 			 * only for testing get methodes test1=new Label(getYear());
