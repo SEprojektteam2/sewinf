@@ -123,9 +123,13 @@ public class VisualizationManager {
 	//calculating the index which will represent the appropriate year
 	private int calculateYearIndex(String year)
 	{
+		
 		int index = -1;
 		
 		int yInd = Integer.parseInt(year);
+		if(yInd < 1990 || yInd > 2011)
+			return -1;
+		
 		yInd -= MAX_YEAR;
 		
 		index = Math.abs(yInd); 
