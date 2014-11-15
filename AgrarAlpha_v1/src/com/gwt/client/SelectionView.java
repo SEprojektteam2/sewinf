@@ -52,7 +52,7 @@ public class SelectionView extends Composite implements Serializable{
 	private int CBcounter = 0; //counter how many checkboxes are checked
 	//private DataManager data;
 	
-	//private DataManagerServiceAsync dataManagerSvc = GWT.create(DataManagerService.class);
+	private DataManagerServiceAsync dataManagerSvc = GWT.create(DataManagerService.class);
 	/*
 	 * This class is drawing the options, the user can choose from. The
 	 * RootPanel is a FlexTable (Table with flexible size)
@@ -94,24 +94,22 @@ public class SelectionView extends Composite implements Serializable{
 			String country=(String) cArray.get(j); 
 			countryLB.addItem(country); 
 		}*/
-		/*
+		countryLB = new ListBox();
+		countryLB.addChangeHandler(new countryLBChangeHandler());
 		dataManagerSvc.getCountries(
 				new AsyncCallback<ArrayList<String>>() {
 					public void onFailure(Throwable caught) {
 						// Show the RPC error message to the user
 						System.out.println("Error!");
 					}
-
 					public void onSuccess(ArrayList<String> resultTemp) {
-						countryLB = new ListBox();
-						countryLB.addChangeHandler(new countryLBChangeHandler());
 						for(int j=0;j<resultTemp.size();j++) {
 							String country=(String) resultTemp.get(j); 
 							countryLB.addItem(country); 
 							System.out.println("2");
 						}
 					}
-				});*/
+				});/**/
 		/*ArrayList<String> countries = new ArrayList<String>();
 		countries.add(0, "World");
 		countryLB = new ListBox();
@@ -119,13 +117,13 @@ public class SelectionView extends Composite implements Serializable{
 		for(int j=0;j<countries.size();j++) {
 			String country=(String) countries.get(j); 
 			countryLB.addItem(country); 
-		}*/
+		}
 		
 		countryLB = new ListBox();
 		countryLB.addChangeHandler(new countryLBChangeHandler());
 		countryLB.addItem("World");
 		//countryLB.addItem("Switzerland");
-		//countryLB.addItem("Germany");
+		//countryLB.addItem("Germany");*/
 
 		productLB = new ListBox();
 		productLB.addItem(" ");

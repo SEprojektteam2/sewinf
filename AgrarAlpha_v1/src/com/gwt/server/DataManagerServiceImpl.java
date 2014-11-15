@@ -1,4 +1,4 @@
-/*package com.gwt.server;
+package com.gwt.server;
 
 import java.sql.*;
 
@@ -32,8 +32,9 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 		//limit 1 bei der Abfrage (entfernt die Dupletten)
 		ArrayList<String> countries = new ArrayList<String>();
 		countries.add(0, "World");
+		countries.add(1, "World");
 		
-		connectToDatabase();
+		/*connectToDatabase();
 		// if you only need a few columns, specify them by name instead of using "*"
 		String query = "SELECT distinct AreaName FROM agrar WHERE Domain = 'Annual population'";
 		
@@ -59,7 +60,7 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 				
 		return (countries);
 	}	
@@ -191,5 +192,5 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 	}
 		
 }	
-	*/
+	
 

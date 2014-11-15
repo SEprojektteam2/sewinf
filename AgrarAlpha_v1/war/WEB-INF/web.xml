@@ -5,7 +5,7 @@
          version="2.5"
          xmlns="http://java.sun.com/xml/ns/javaee">
 
-  <!-- Servlets -->
+  <!-- Servlets
   <servlet>
     <servlet-name>greetServlet</servlet-name>
     <servlet-class>com.gwt.server.GreetingServiceImpl</servlet-class>
@@ -14,7 +14,7 @@
   <servlet-mapping>
     <servlet-name>greetServlet</servlet-name>
     <url-pattern>/agraralpha_v1/greet</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> -->
   
   <servlet>
     <servlet-name>ImportHandlerServlet</servlet-name>
@@ -26,17 +26,17 @@
     <url-pattern>/HelloWorld/ImportHandlerServlet</url-pattern>
   </servlet-mapping>
   
-      <!-- Servlets -->
- <!--  <servlet>
+      <!-- Servlets--> 
+<servlet>
     <servlet-name>DataManagerServiceImpl</servlet-name>
-    <servlet-class>com.google.gwt.server.DataManagerServiceImpl</servlet-class>
+    <servlet-class>com.gwt.server.DataManagerServiceImpl</servlet-class>
   </servlet>
 
   <servlet-mapping>
     <servlet-name>DataManagerServiceImpl</servlet-name>
     <url-pattern>/agraralpha_v1/try</url-pattern>
   </servlet-mapping>
-   -->
+
   
   
   

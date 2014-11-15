@@ -1,4 +1,4 @@
-package com.gwt.server;
+/*package com.gwt.server;
 
 import com.gwt.client.GreetingService;
 import com.gwt.shared.FieldVerifier;
@@ -6,7 +6,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**
  * The server-side implementation of the RPC service.
- */
+ 
 @SuppressWarnings("serial")
 public class GreetingServiceImpl extends RemoteServiceServlet implements
 		GreetingService {
@@ -37,7 +37,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 	 * 
 	 * @param html the html string to escape
 	 * @return the escaped string
-	 */
+	 
 	private String escapeHtml(String html) {
 		if (html == null) {
 			return null;
@@ -46,3 +46,4 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 				.replaceAll(">", "&gt;");
 	}
 }
+*/
