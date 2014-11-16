@@ -34,9 +34,9 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 		countries.add(0, "World");
 		countries.add(1, "World");
 		
-		/*connectToDatabase();
+		connectToDatabase();
 		// if you only need a few columns, specify them by name instead of using "*"
-		String query = "SELECT distinct AreaName FROM agrar WHERE Domain = 'Annual population'";
+		String query = "SELECT distinct AreaName FROM records WHERE Domain = 'Annual population'";
 		
 		// create the java statement
 		Statement st = null;
@@ -60,7 +60,7 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 				
 		return (countries);
 	}	
@@ -142,20 +142,20 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 		int counter=0;
 		// country=null when world is selected and product is given and type is given => Output: Country + Year + Value
 		if(country=="null"){ 
-			query = "SELECT AreaName, Year, Value FROM agrar WHERE ElementName = '"+type+"' AND ItemName = '"+product+"' ORDER BY Year ASC";
-			query2 = "SELECT distinct AreaName FROM agrar WHERE ElementName = '"+type+"' AND ItemName = '"+product+"'";
+			query = "SELECT AreaName, Year, Value FROM records WHERE ElementName = '"+type+"' AND ItemName = '"+product+"' ORDER BY Year ASC";
+			query2 = "SELECT distinct AreaName FROM records WHERE ElementName = '"+type+"' AND ItemName = '"+product+"'";
 			counter=getCounter(query2);
 		}
 		//
 		if(product=="null"){
-			query = "SELECT ItemName, Year, Value FROM agrar WHERE ElementName = '"+type+"' AND AreaName = '"+country+"' ORDER BY Year ASC";
-			query2 = "SELECT distinct ItemName FROM agrar WHERE ElementName = '"+type+"' AND AreaName = '"+country+"'";
+			query = "SELECT ItemName, Year, Value FROM records WHERE ElementName = '"+type+"' AND AreaName = '"+country+"' ORDER BY Year ASC";
+			query2 = "SELECT distinct ItemName FROM records WHERE ElementName = '"+type+"' AND AreaName = '"+country+"'";
 			counter=getCounter(query2);
 		}
 		//
 		if(type=="null"){
-			query = "SELECT ElementName, Year, Value FROM agrar WHERE ItemName = '"+product+"' AND AreaName = '"+country+"' ORDER BY Year ASC";
-			query2 = "SELECT distinct ElementName FROM agrar WHERE ItemName = '"+product+"' AND AreaName = '"+country+"'";
+			query = "SELECT ElementName, Year, Value FROM records WHERE ItemName = '"+product+"' AND AreaName = '"+country+"' ORDER BY Year ASC";
+			query2 = "SELECT distinct ElementName FROM records WHERE ItemName = '"+product+"' AND AreaName = '"+country+"'";
 			counter=getCounter(query2);
 		}
 			
