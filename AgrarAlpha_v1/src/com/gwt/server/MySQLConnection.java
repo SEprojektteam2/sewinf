@@ -1,4 +1,4 @@
-package com.uzh.agrar.server;
+package com.gwt.server;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
