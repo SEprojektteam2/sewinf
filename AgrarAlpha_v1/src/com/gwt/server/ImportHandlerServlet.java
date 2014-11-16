@@ -1,30 +1,31 @@
-package com.gwt.server;
+package com.uzh.agrar.server;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.logging.Logger;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import com.google.appengine.api.ThreadManager;
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.blobstore.BlobstoreInputStream;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.google.appengine.api.utils.SystemProperty;
+import com.opencsv.CSVReader;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import au.com.bytecode.opencsv.CSVReader;
 //
 //Import external class for simple csv handling
 
@@ -39,23 +40,30 @@ import au.com.bytecode.opencsv.CSVReader;
 		public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 			PrintWriter out = resp.getWriter();
 			Date start = new Date();
-		
+			
+			resp.setContentType("text/html");
 			
 			Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);
 			List<BlobKey> bkList = blobs.get("importCSV");
 			BlobKey blobKey = bkList.get(0);
 			BlobstoreInputStream blobStream = new BlobstoreInputStream(blobKey);
-			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(blobStream));
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(blobStream, "utf-8"));
 			ArrayList<String[][]> arrays= new ArrayList<String[][]>(); 
 			CSVReader csvReader = null;
-			
-			MySQLConnection database = new MySQLConnection("173.194.253.240:3306","root","","agrar","agraralphav1:agrar");
-		    if(database.connect()){
-		    	out.println("<html><head></head><body>Connection Started</body></html>");
-		    }
-		   
+			String url = null;
+		
+		    MySQLConnection database = new MySQLConnection("173.194.253.240:3306","root","","agrar","agraralphav1:agrar");
+		    if(database.connect())
+		    	out.println("Connection started!");
+		    Connection conn = database.returnConnection();
+			try {
+				conn = DriverManager.getConnection(url);
+			} catch (SQLException e2) {
+				// TODO Auto-generated catch block
+				out.println(e2.toString());
+			}
 		    //TEst
-			Connection conn = database.returnConnection();
+			//Connection conn = database.returnConnection();
 			//Print out first line to check if BufferedReader is empty
 			while(bufferedReader.read() != -1){
 			
@@ -74,8 +82,8 @@ import au.com.bytecode.opencsv.CSVReader;
 				//out.flush();
 				//out.close();
 			 blobstoreService.delete(blobKey);
-				
-			 resp.sendRedirect("http://default.agraralphav1.appspot.com/");
+				out.flush();
+			 //resp.sendRedirect("http://default.agraralpha.appspot.com/");
 			 
 				String statement = "INSERT INTO records (domainCode, domain, areaCode, areaName, elementCode, elementName, itemCode, itemName, year, unit, value, flag, flagD) VALUES( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )";
 				PreparedStatement stmt = null;
@@ -116,6 +124,7 @@ import au.com.bytecode.opencsv.CSVReader;
 				}
     		try {
 				stmt.executeBatch();
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
