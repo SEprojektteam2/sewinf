@@ -5,6 +5,7 @@
 <module>default</module>
   <!--
     Allows App Engine to send multiple requests to one instance in parallel:
+    MUST BE FALSE OTHERWISE IMPORTHANDLER DOESN'T WORK CORRECTLY
   -->
   <threadsafe>false</threadsafe>
 
