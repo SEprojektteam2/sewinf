@@ -84,16 +84,7 @@ public class SelectionView extends Composite implements Serializable{
 			yearLB.addItem(year);
 		}
 		
-		// String country=null;
-		/* fills listbox with countries */
-		/*countryLB = new ListBox();
-		countryLB.addChangeHandler(new countryLBChangeHandler());
-		ArrayList cArray= new ArrayList();
-		cArray = data.getCountries(); 
-		for(int j=0;j<cArray.size();j++) {
-			String country=(String) cArray.get(j); 
-			countryLB.addItem(country); 
-		}*/
+		
 		countryLB = new ListBox();
 		countryLB.addChangeHandler(new countryLBChangeHandler());
 		dataManagerSvc.getCountries(
@@ -109,14 +100,8 @@ public class SelectionView extends Composite implements Serializable{
 						}
 					}
 				});
-		/*ArrayList<String> countries = new ArrayList<String>();
-		countries.add(0, "World");
-		countryLB = new ListBox();
-		countryLB.addChangeHandler(new countryLBChangeHandler());
-		for(int j=0;j<countries.size();j++) {
-			String country=(String) countries.get(j); 
-			countryLB.addItem(country); 
-		}
+		
+		
 		
 		countryLB = new ListBox();
 		countryLB.addChangeHandler(new countryLBChangeHandler());
@@ -201,12 +186,19 @@ public class SelectionView extends Composite implements Serializable{
 			}
 			
 			else{*/
-				DataManager manager = new DataManager();
+				DataManager_test manager = new DataManager_test();
 				VisualizationManager vis= new VisualizationManager(manager.setUpStaticData(), "world", "apple", "consumption", "2010");
 				main.openCreateView(vis);
 			//}
 			
-			/*dataManagerSvc.getDataTable(getCountry(), getProduct(), getType(),
+				
+			/*DataManager data = new DataManager();
+			data.createDataTable(getCountry(), getProduct(), getType());
+			VisualizationManager visMan= new VisualizationManager(data,getCountry(),getProduct(), getType(),getYear());
+			main.openCreateView(visMan);
+			
+			
+			dataManagerSvc.getDataTable(getCountry(), getProduct(), getType(),
 					new AsyncCallback<DataTable>() {
 						public void onFailure(Throwable caught) {
 							// Show the RPC error message to the user

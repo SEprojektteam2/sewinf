@@ -1,10 +1,8 @@
 package com.gwt.server;
 
 import java.sql.*;
-
-
-
 import java.util.ArrayList;
+
 import com.gwt.server.MySQLConnection;
 //import com.google.appengine.api.utils.SystemProperty;
 import com.google.gwt.visualization.client.*;
@@ -32,7 +30,7 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 		//limit 1 bei der Abfrage (entfernt die Dupletten)
 		ArrayList<String> countries = new ArrayList<String>();
 		countries.add(0, "World");
-		countries.add(1, "World");
+		//countries.add(1, "World");
 		
 		connectToDatabase();
 		// if you only need a few columns, specify them by name instead of using "*"
@@ -48,7 +46,7 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 			rs = st.executeQuery(query);
 							
 			// iterate through the java resultset
-			int i=0;
+			int i=1;
 						
 			while (rs.next())
 			{
@@ -89,6 +87,7 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 					result.add(i, resultTemp);
 					i++;
 			}
+			
 		} 
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -122,7 +121,7 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 		return i;
 	}
 		
-	public DataTable getDataTable(String country, String product, String type){
+	public ArrayList<String[]> getData(String country, String product, String type){
 		// "null" nicht angegeben => nicht Beachtung der varaible 
 		//private DataTable TableDATA;
 		//-> siehe prepareData() VisualizationManager
@@ -145,23 +144,32 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 			query = "SELECT AreaName, Year, Value FROM records WHERE ElementName = '"+type+"' AND ItemName = '"+product+"' ORDER BY Year ASC";
 			query2 = "SELECT distinct AreaName FROM records WHERE ElementName = '"+type+"' AND ItemName = '"+product+"'";
 			counter=getCounter(query2);
+			searchingVar="AreaName";
 		}
 		//
 		if(product=="null"){
 			query = "SELECT ItemName, Year, Value FROM records WHERE ElementName = '"+type+"' AND AreaName = '"+country+"' ORDER BY Year ASC";
 			query2 = "SELECT distinct ItemName FROM records WHERE ElementName = '"+type+"' AND AreaName = '"+country+"'";
 			counter=getCounter(query2);
+			searchingVar="ItemName";
 		}
 		//
 		if(type=="null"){
 			query = "SELECT ElementName, Year, Value FROM records WHERE ItemName = '"+product+"' AND AreaName = '"+country+"' ORDER BY Year ASC";
 			query2 = "SELECT distinct ElementName FROM records WHERE ItemName = '"+product+"' AND AreaName = '"+country+"'";
 			counter=getCounter(query2);
+			searchingVar="ElementName";
 		}
 			
 		result = readDatabase(query,searchingVar,outputVar);
-			
-		DataTable DATA = DataTable.create();
+		
+		String[] resultTemp = new String[3];
+		resultTemp[0] = Integer.toString(counter);
+		resultTemp[1] = searchingVar;
+		resultTemp[2] = "null";
+		result.add(result.size(),resultTemp);
+		
+		/*DataTable DATA = DataTable.create();
 
 		DATA.addColumn(ColumnType.STRING, searchingVar);
 		for(int j=2011; j>=1990;j--){      //TODO Achtung Funktion zum auffuellen
@@ -180,9 +188,9 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 				DATA.setCell(c, k, Double.parseDouble(temp[2]), temp[2], null);
 			}
 			DATA.setCell(c, 0, temp[1],temp[1] , null);
-		}
-			
-		return DATA;
+		}*/
+		
+		return result;
 	}
 		
 
