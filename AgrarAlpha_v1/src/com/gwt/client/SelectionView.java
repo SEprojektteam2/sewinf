@@ -106,10 +106,9 @@ public class SelectionView extends Composite implements Serializable{
 						for(int j=0;j<resultTemp.size();j++) {
 							String country=(String) resultTemp.get(j); 
 							countryLB.addItem(country); 
-							System.out.println("2");
 						}
 					}
-				});/**/
+				});
 		/*ArrayList<String> countries = new ArrayList<String>();
 		countries.add(0, "World");
 		countryLB = new ListBox();
