@@ -13,7 +13,9 @@ import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import com.google.appengine.api.ThreadManager;
 import com.google.appengine.api.blobstore.BlobKey;
@@ -123,7 +125,13 @@ import javax.servlet.http.HttpServletResponse;
 			
 				}
     		try {
+
 				stmt.executeBatch();
+				
+    			String query = "DELETE FROM records WHERE domainCode = 'Domain Code' AND domain = 'Domain' AND areaCode = 'AreaCode' AND areaName = 'AreaName' AND elementCode = 'ElementCode' AND elementName = 'ElementName' AND itemCode = 'ItemCode' AND itemName = 'ItemName' AND year = 'Year' AND unit = 'Unit' AND value = 'Value' AND flag = 'Flag' AND flagD = 'FlagD'";
+    		    PreparedStatement preparedStmt = conn.prepareStatement(query);
+    		    preparedStmt.execute();
+    			
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
