@@ -10,6 +10,9 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.TabPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.visualization.client.VisualizationUtils;
+import com.google.gwt.visualization.client.visualizations.GeoMap;
+import com.google.gwt.visualization.client.visualizations.Table;
 
 public class CreateView extends Composite{
 	
@@ -23,10 +26,10 @@ public class CreateView extends Composite{
 
 	/* This class present the view the user has after he clicked the create button on mainView. it contains the graphics the user wants to see
 	 */
-	public CreateView(VisualizationManager visMan){
+	public CreateView(final VisualizationManager visMan){
 		initWidget(this.basePanel);
 		
-		this.VisMan = visMan;
+		
 		
 		source= new SourceView();
 		source.addSource("Source:...."); //add a source
@@ -39,9 +42,16 @@ public class CreateView extends Composite{
 		Button message = new Button("To be implemented in a future sprint.");
 		message.setStyleName("message");
 		
-		
+		Runnable onLoadCallbackTable = new Runnable(){
+			public void run(){
+				VisMan = visMan;
+				tablePanel.add(VisMan.graphs.get(0));
+			}
+		};
+
+		VisualizationUtils.loadVisualizationApi(onLoadCallbackTable, Table.PACKAGE);
 		  
-		tablePanel.add(VisMan.graphWidgets[0]);
+		
 		
 		tablePanel.add(source);
 		
@@ -50,10 +60,17 @@ public class CreateView extends Composite{
 		
 		
 	
-		graphPanel.add(message.asWidget());
+		graphPanel.add(message);
 		//graphPanel.add(source); // adding a verticalPanel with all source to the mapPanel
 		
-		mapPanel.add(VisMan.graphWidgets[1]);
+		Runnable onLoadCallbackMap = new Runnable(){
+			public void run(){
+				mapPanel.add(VisMan.graphs.get(1));
+			}
+		};
+
+		VisualizationUtils.loadVisualizationApi(onLoadCallbackMap, GeoMap.PACKAGE);
+		  
 		//mapPanel.add(message.asWidget());
 		mapPanel.add(source); // adding a verticalPanel with all source to the mapPanel
 		
