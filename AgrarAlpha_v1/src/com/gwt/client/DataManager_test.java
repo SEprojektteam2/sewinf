@@ -26,10 +26,10 @@ public class DataManager_test{
 		
 		data.addRows(5);
 		data.setCell(0, 0, "Switzerland", "Switzerland", null);
-		data.setCell(0, 0, "Germany", "Germany", null);
-		data.setCell(0, 0, "Austria", "Austria", null);
-		data.setCell(0, 0, "Slovakia", "Slovakia", null);
-		data.setCell(0, 0, "Czech Republic", "Czech Republic", null);
+		data.setCell(1, 0, "Germany", "Germany", null);
+		data.setCell(2, 0, "Austria", "Austria", null);
+		data.setCell(3, 0, "Slovakia", "Slovakia", null);
+		data.setCell(4, 0, "Czech Republic", "Czech Republic", null);
 		
 		
 		
@@ -37,7 +37,7 @@ public class DataManager_test{
 		{
 			for(int j=0; j<5; j++)
 			{
-				double number = Random.nextDouble() % 1000.0;
+				double number = Math.round((Random.nextDouble() % 1000.0 )* 1000);
 				data.setCell(j, i, number, Double.toString(number), null);
 			}
 		}
