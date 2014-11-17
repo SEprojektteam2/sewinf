@@ -33,6 +33,12 @@ public class VisualizationManager {
 	//Constructor
 	public VisualizationManager(DataTable aTableDATA, String country, String product, String type, String year)
 	{
+		if(aTableDATA.equals(null))
+		{
+			graphs.add(0, new Label("DataTable = null"));
+			graphs.add(1, new Label("DataTable = null"));
+			return;
+		}
 		setParameters(country, product, type);
 		
 		TableDATA = aTableDATA;
