@@ -103,9 +103,9 @@ public class SelectionView extends Composite implements Serializable{
 		
 		
 		
-		countryLB = new ListBox();
-		countryLB.addChangeHandler(new countryLBChangeHandler());
-		countryLB.addItem("World");
+		//countryLB = new ListBox();
+		//countryLB.addChangeHandler(new countryLBChangeHandler());
+		//countryLB.addItem("World");
 		//countryLB.addItem("Switzerland");
 		//countryLB.addItem("Germany");*/
 
@@ -196,6 +196,12 @@ public class SelectionView extends Composite implements Serializable{
 			data.createDataTable(getCountry(), getProduct(), getType());
 			VisualizationManager visMan= new VisualizationManager(data,getCountry(),getProduct(), getType(),getYear());
 			main.openCreateView(visMan);
+			
+			//DataManager data = new DataManager();
+			//data.createDataTable(getCountry(), getProduct(), getType());
+			//VisualizationManager visMan= new VisualizationManager(data,getCountry(),getProduct(), getType(),getYear());
+			//main.openCreateView(visMan);
+
 			
 			
 			dataManagerSvc.getDataTable(getCountry(), getProduct(), getType(),

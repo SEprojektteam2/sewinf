@@ -34,7 +34,7 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 		
 		connectToDatabase();
 		// if you only need a few columns, specify them by name instead of using "*"
-		String query = "SELECT distinct AreaName FROM records WHERE Domain = 'Annual population'";
+		String query = "SELECT distinct AreaName FROM records WHERE ElementName='Export Quantity'";
 		
 		// create the java statement
 		Statement st = null;
