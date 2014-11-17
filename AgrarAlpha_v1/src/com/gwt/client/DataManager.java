@@ -12,6 +12,7 @@ import com.google.gwt.visualization.client.AbstractDataTable.ColumnType;
 @SuppressWarnings("serial")
 public class DataManager implements Serializable{
 	private DataTable DATA;
+	private ArrayList<String[]> DataArray;
 	private DataManagerServiceAsync dataManagerSvc = GWT.create(DataManagerService.class);
 	
 	public DataTable changeFormat(ArrayList<String[]> dataArraylist){
@@ -45,7 +46,7 @@ public class DataManager implements Serializable{
 	}
 	
 	
-	public DataTable createDataTable(String country, String product, String type){
+	/*public DataTable createDataTable(String country, String product, String type){
 		
 		DATA = DataTable.create();
 		
@@ -70,7 +71,7 @@ public class DataManager implements Serializable{
 				double number = Random.nextDouble() % 1000.0;
 				DATA.setCell(j, i, number, Double.toString(number), null);
 			}
-		}*/
+		}*//*
 		
 		
 		dataManagerSvc.getData(country, product, type,
@@ -87,5 +88,23 @@ public class DataManager implements Serializable{
 		
 		});
 		return DATA;
+	}*/
+	
+	public ArrayList<String[]> createDataTable(String country, String product, String type){
+	
+		dataManagerSvc.getData(country, product, type,
+				new AsyncCallback<ArrayList<String[]>>() {
+					public void onFailure(Throwable caught) {
+						// Show the RPC error message to the user
+						System.out.println("Error at DataTable!");
+					}
+				
+					public void onSuccess(ArrayList<String[]> resultTemp) {
+						DataArray=resultTemp;
+						System.out.println("Nice!");
+					}
+	
+		});
+		return DataArray;
 	}
 }
