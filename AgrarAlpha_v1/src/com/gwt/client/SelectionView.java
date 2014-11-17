@@ -21,6 +21,9 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.visualization.client.DataTable;
+import com.google.gwt.visualization.client.VisualizationUtils;
+import com.google.gwt.visualization.client.visualizations.Table;
+
 import java.io.Serializable;
 
 public class SelectionView extends Composite implements Serializable{
@@ -212,8 +215,8 @@ public class SelectionView extends Composite implements Serializable{
 			//De visualizatonManager muen da erstellt werde und übergeh werde!!
 			Runnable onLoadCallback = new Runnable(){	
 				public void run(){
-					DataManager_test manager = new DataManager_test();
-					VisualizationManager vis= new VisualizationManager(manager.setUpStaticData(), "world", "apple", "consumption", "2010");
+					DataManager data = new DataManager();
+					VisualizationManager vis= new VisualizationManager(data.createDataTable("India", "Tea", "null"), "India", "Tea", "null", "2010");
 					main.openCreateView(vis);
 				}
 			};
@@ -221,8 +224,8 @@ public class SelectionView extends Composite implements Serializable{
 			VisualizationUtils.loadVisualizationApi(onLoadCallback, Table.PACKAGE);
 
 				
-			DataManager data = new DataManager();
-			data.createDataTable("India", "Tea", "null");
+			//DataManager data = new DataManager();
+			//data.createDataTable("India", "Tea", "null");
 			//VisualizationManager visMan= new VisualizationManager(getCountry(),getProduct(), getType(),getYear());
 			//main.openCreateView(visMan);
 			
