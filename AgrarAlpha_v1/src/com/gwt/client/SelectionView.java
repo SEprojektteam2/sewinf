@@ -91,17 +91,15 @@ public class SelectionView extends Composite implements Serializable{
 				new AsyncCallback<ArrayList<String>>() {
 					public void onFailure(Throwable caught) {
 						// Show the RPC error message to the user
-						System.out.println("Error!");
+						System.out.println("Error getCountry!");
 					}
 					public void onSuccess(ArrayList<String> resultTemp) {
 						for(int j=0;j<resultTemp.size();j++) {
 							String country=(String) resultTemp.get(j); 
-							countryLB.addItem(country); 
-						}
+							countryLB.addItem(country);
+							}
 					}
 				});
-		
-		
 		
 		//countryLB = new ListBox();
 		//countryLB.addChangeHandler(new countryLBChangeHandler());
@@ -110,11 +108,28 @@ public class SelectionView extends Composite implements Serializable{
 		//countryLB.addItem("Germany");*/
 
 		productLB = new ListBox();
+		dataManagerSvc.getProducts(
+				new AsyncCallback<ArrayList<String>>() {
+					public void onFailure(Throwable caught) {
+						// Show the RPC error message to the user
+						System.out.println("Error getProduct!");
+					}
+					public void onSuccess(ArrayList<String> resultTemp) {
+						for(int j=0;j<resultTemp.size();j++) {
+							String product=(String) resultTemp.get(j); 
+							productLB.addItem(product);
+							}
+					}
+				});
+		productLB.addChangeHandler(new listBoxChangeHandler(productLB,
+				productCB));
+		
+		/*productLB = new ListBox();
 		productLB.addItem(" ");
 		productLB.addItem("Apple");
 		productLB.addItem("Pie");
 		productLB.addChangeHandler(new listBoxChangeHandler(productLB,
-				productCB));
+				productCB));*/
 
 		typeLB = new ListBox();
 		typeLB.addItem(" ");
@@ -186,18 +201,18 @@ public class SelectionView extends Composite implements Serializable{
 			}
 			
 			else{*/
-				DataManager_test manager = new DataManager_test();
-				VisualizationManager vis= new VisualizationManager(manager.setUpStaticData(), "world", "apple", "consumption", "2010");
-				main.openCreateView(vis);
+			//	DataManager_test manager = new DataManager_test();
+			//	VisualizationManager vis= new VisualizationManager(manager.setUpStaticData(), "world", "apple", "consumption", "2010");
+			//	main.openCreateView(vis);
 			//}
 			
 				
-			/*DataManager data = new DataManager();
-			data.createDataTable(getCountry(), getProduct(), getType());
-			VisualizationManager visMan= new VisualizationManager(data,getCountry(),getProduct(), getType(),getYear());
-			main.openCreateView(visMan);
+			DataManager data = new DataManager();
+			data.createDataTable("India", "Tea", "null");
+			//VisualizationManager visMan= new VisualizationManager(getCountry(),getProduct(), getType(),getYear());
+			//main.openCreateView(visMan);
 			
-			//DataManager data = new DataManager();
+			/*//DataManager data = new DataManager();
 			//data.createDataTable(getCountry(), getProduct(), getType());
 			//VisualizationManager visMan= new VisualizationManager(data,getCountry(),getProduct(), getType(),getYear());
 			//main.openCreateView(visMan);
