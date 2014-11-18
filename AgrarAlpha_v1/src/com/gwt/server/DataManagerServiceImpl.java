@@ -234,13 +234,13 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 			Temp[2] = Double.toString(number);
 			result.add(0,Temp);
 			String Temp1[] = new String[3];
-			Temp1[0] = "2011";
+			Temp1[0] = "2010";
 			Temp1[1] = "Switzerland";
 			double number2 = Random.nextDouble() % 1000.0;
 			Temp1[2] = Double.toString(number2);
 			result.add(1,Temp);
 			String Temp2[] = new String[3];
-			Temp2[0] = "2011";
+			Temp2[0] = "2009";
 			Temp2[1] = "Switzerland";
 			double number3 = Random.nextDouble() % 1000.0;
 			Temp2[2] = Double.toString(number3);
