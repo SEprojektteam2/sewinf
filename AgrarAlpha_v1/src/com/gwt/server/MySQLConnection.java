@@ -2,7 +2,6 @@ package com.gwt.server;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
@@ -47,18 +46,6 @@ public class MySQLConnection {
 		     log.warning(e.toString());
 		      return false;
 		    }
-	}
-	
-	public int executeUpdate(String statement){
-    	int success = 2;
-    	try {
-		PreparedStatement stmt = conn.prepareStatement(statement);
-		success = stmt.executeUpdate();
-		} catch (SQLException e) {
-			success = -1;
-			log.warning(e.toString());
-		}
-		return success;
 	}
 	
 	public Connection returnConnection(){
