@@ -20,7 +20,7 @@ public class DataManager implements Serializable{
 	
 	public DataTable changeFormat(final ArrayList<String[]> dataArraylist){
 		
-		Runnable CallBack = new Runnable(){
+		/*Runnable CallBack = new Runnable(){
 			public void run()
 			{
 				DataTemp = DataTable.create();
@@ -51,9 +51,9 @@ public class DataManager implements Serializable{
 			}
 		};
 		
-		VisualizationUtils.loadVisualizationApi(CallBack, Table.PACKAGE);
+		VisualizationUtils.loadVisualizationApi(CallBack, Table.PACKAGE);*/
 		
-		/*
+		
 		DataTemp.addColumn(ColumnType.STRING, "Country");
 		DataTemp.addColumn(ColumnType.NUMBER, "2011");
 		DataTemp.addColumn(ColumnType.NUMBER, "2010");
@@ -77,14 +77,14 @@ public class DataManager implements Serializable{
 			}
 		}
 		
-		*/
+		
 		return DataTemp;
 	}
 	
 	
 	public DataTable createDataTable(String country, String product, String type){	
 		
-		dataManagerSvc.getData(country, product, type,
+		/*dataManagerSvc.getData(country, product, type,
 				new AsyncCallback<ArrayList<String[]>>() {
 					public void onFailure(Throwable caught) {
 						// Show the RPC error message to the user
@@ -95,10 +95,10 @@ public class DataManager implements Serializable{
 						DATA=changeFormat(resultTemp);
 					}
 		
-		});
-		/*
+		});*/
+		
 		ArrayList<String[]> resultTemp = null;
-		DATA=changeFormat(resultTemp);*/
+		DATA=changeFormat(resultTemp);
 		return DATA;
 	}
 	
