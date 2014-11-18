@@ -70,40 +70,12 @@ public class DataManager implements Serializable{
 	}
 	
 	
-	public DataTable createDataTable(String country, String product, String type){
+	public DataTable createDataTable(String country, String product, String type){	
 		
-		/*DATA = DataTable.create();
-		
-		DATA.addColumn(ColumnType.STRING, "Country");
-		DATA.addColumn(ColumnType.NUMBER, "2011");
-		DATA.addColumn(ColumnType.NUMBER, "2010");
-		DATA.addColumn(ColumnType.NUMBER, "2009");
-		
-		DATA.addRows(5);
-		DATA.setCell(0, 0, "Switzerland", "Switzerland", null);
-		DATA.setCell(1, 0, "Germany", "Germany", null);
-		DATA.setCell(2, 0, "Austria", "Austria", null);
-		DATA.setCell(3, 0, "Slovakia", "Slovakia", null);
-		DATA.setCell(4, 0, "Czech Republic", "Czech Republic", null);
-		
-		
-		
-		for(int i=1; i<4; i++)
-		{
-			for(int j=0; j<5; j++)
-			{
-				double number = Random.nextDouble() % 1000.0;
-				DATA.setCell(j, i, number, Double.toString(number), null);
-			}
-		}*/
-		
-		
-		dataManagerSvc.getData(country, product, type,
+		/*dataManagerSvc.getData(country, product, type,
 				new AsyncCallback<ArrayList<String[]>>() {
 					public void onFailure(Throwable caught) {
-						ArrayList<String[]> resultTemp = null;
 						// Show the RPC error message to the user
-						DATA=changeFormat(resultTemp);
 						System.out.println("Error2!");
 					}
 					
@@ -111,8 +83,10 @@ public class DataManager implements Serializable{
 						DATA=changeFormat(resultTemp);
 					}
 		
-		});
+		});*/
 		
+		ArrayList<String[]> resultTemp = null;
+		DATA=changeFormat(resultTemp);
 		return DATA;
 	}
 	
