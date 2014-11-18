@@ -8,6 +8,7 @@ import com.google.gwt.user.client.Random;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.visualization.client.*;
 import com.google.gwt.visualization.client.AbstractDataTable.ColumnType;
+import com.google.gwt.visualization.client.visualizations.Table;
 
 @SuppressWarnings("serial")
 public class DataManager implements Serializable{
@@ -15,34 +16,45 @@ public class DataManager implements Serializable{
 	private ArrayList<String[]> DataArray;
 	private DataManagerServiceAsync dataManagerSvc = GWT.create(DataManagerService.class);
 	
-	public DataTable changeFormat(ArrayList<String[]> dataArraylist){
-		DataTable DataTemp = DataTable.create();
+	DataTable DataTemp;
+	
+	public DataTable changeFormat(final ArrayList<String[]> dataArraylist){
 		
-		String[] temp = dataArraylist.get(dataArraylist.size());
-		int counter = Integer.parseInt(temp[0]);
-		String searchingVar = temp[1];
-		
-		DataTemp.addColumn(ColumnType.STRING, searchingVar);
-		for(int j=2011; j>=1990;j--){      //TODO Achtung Funktion zum auffuellen
-			DataTemp.addColumn(ColumnType.NUMBER, Integer.toString(j));
-		}
-				
-		DataTemp.addRows(counter);
-
-		for(int c = 0; c < DataTemp.getNumberOfRows(); c++ )
-		{
-			int k;
-			String[] temp2=null;
-			for(k = 1; k <= DataTemp.getNumberOfColumns(); k++ )
+		Runnable CallBack = new Runnable(){
+			public void run()
 			{
-				temp2=dataArraylist.get(k-1);
-				DATA.setCell(c, k, Double.parseDouble(temp2[2]), temp2[2], null);
+				DataTemp = DataTable.create();
+				
+				String[] temp = dataArraylist.get(dataArraylist.size());
+				int counter = Integer.parseInt(temp[0]);
+				String searchingVar = temp[1];
+				
+				DataTemp.addColumn(ColumnType.STRING, searchingVar);
+				for(int j=2011; j>=1990;j--){      //TODO Achtung Funktion zum auffuellen
+					DataTemp.addColumn(ColumnType.NUMBER, Integer.toString(j));
+				}
+						
+				DataTemp.addRows(counter);
+
+				for(int c = 0; c < DataTemp.getNumberOfRows(); c++ )
+				{
+					int k;
+					String[] temp2=null;
+					for(k = 1; k <= DataTemp.getNumberOfColumns(); k++ )
+					{
+						temp2=dataArraylist.get(k-1);
+						DataTemp.setCell(c, k, Double.parseDouble(temp2[2]), temp2[2], null);
+					}
+					DataTemp.setCell(c, 0, temp2[1],temp2[1] , null);
+				}
+				
 			}
-			DATA.setCell(c, 0, temp2[1],temp2[1] , null);
-		}
+		};
 		
+		VisualizationUtils.loadVisualizationApi(CallBack, Table.PACKAGE);
 		
-		/*DataTemp.addColumn(ColumnType.STRING, "Country");
+		/*
+		DataTemp.addColumn(ColumnType.STRING, "Country");
 		DataTemp.addColumn(ColumnType.NUMBER, "2011");
 		DataTemp.addColumn(ColumnType.NUMBER, "2010");
 		DataTemp.addColumn(ColumnType.NUMBER, "2009");
@@ -63,9 +75,9 @@ public class DataManager implements Serializable{
 				double number = Random.nextDouble() % 1000.0;
 				DataTemp.setCell(j, i, number, Double.toString(number), null);
 			}
-		}*/
+		}
 		
-		
+		*/
 		return DataTemp;
 	}
 	
@@ -84,8 +96,8 @@ public class DataManager implements Serializable{
 					}
 		
 		});
-		
-		/*ArrayList<String[]> resultTemp = null;
+		/*
+		ArrayList<String[]> resultTemp = null;
 		DATA=changeFormat(resultTemp);*/
 		return DATA;
 	}
