@@ -249,7 +249,7 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 			Temp3[0] = "3";
 			Temp3[1] = "AreaName";
 			Temp3[2] = "null";
-			result.add(3,Temp);
+			result.add(result.size(),Temp);
 		
 		return result;
 	}
