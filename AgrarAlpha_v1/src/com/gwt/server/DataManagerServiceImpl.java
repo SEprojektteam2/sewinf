@@ -245,6 +245,11 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 			double number3 = Random.nextDouble() % 1000.0;
 			Temp2[2] = Double.toString(number3);
 			result.add(2,Temp);
+			String Temp3[] = new String[3];
+			Temp3[0] = "3";
+			Temp3[1] = "AreaName";
+			Temp3[2] = "null";
+			result.add(3,Temp);
 		
 		return result;
 	}
