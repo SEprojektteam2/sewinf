@@ -133,8 +133,6 @@ public class VisualizationManager {
 			GeoMap map = new GeoMap();
 			map.draw(DATA.get(curYearIndex), createMapOptions());
 			graphs.add(1, map);
-		
-			
 		}
 		else
 		{
