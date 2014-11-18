@@ -18,7 +18,7 @@ public class DataManager implements Serializable{
 	public DataTable changeFormat(ArrayList<String[]> dataArraylist){
 		DataTable DataTemp = DataTable.create();
 		
-		/*String[] temp = dataArraylist.get(dataArraylist.size());
+		String[] temp = dataArraylist.get(dataArraylist.size());
 		int counter = Integer.parseInt(temp[0]);
 		String searchingVar = temp[1];
 		
@@ -39,10 +39,10 @@ public class DataManager implements Serializable{
 				DATA.setCell(c, k, Double.parseDouble(temp2[2]), temp2[2], null);
 			}
 			DATA.setCell(c, 0, temp2[1],temp2[1] , null);
-		}*/
+		}
 		
 		
-		DataTemp.addColumn(ColumnType.STRING, "Country");
+		/*DataTemp.addColumn(ColumnType.STRING, "Country");
 		DataTemp.addColumn(ColumnType.NUMBER, "2011");
 		DataTemp.addColumn(ColumnType.NUMBER, "2010");
 		DataTemp.addColumn(ColumnType.NUMBER, "2009");
@@ -63,7 +63,7 @@ public class DataManager implements Serializable{
 				double number = Random.nextDouble() % 1000.0;
 				DataTemp.setCell(j, i, number, Double.toString(number), null);
 			}
-		}
+		}*/
 		
 		
 		return DataTemp;
@@ -72,7 +72,7 @@ public class DataManager implements Serializable{
 	
 	public DataTable createDataTable(String country, String product, String type){	
 		
-		/*dataManagerSvc.getData(country, product, type,
+		dataManagerSvc.getData(country, product, type,
 				new AsyncCallback<ArrayList<String[]>>() {
 					public void onFailure(Throwable caught) {
 						// Show the RPC error message to the user
@@ -83,10 +83,10 @@ public class DataManager implements Serializable{
 						DATA=changeFormat(resultTemp);
 					}
 		
-		});*/
+		});
 		
-		ArrayList<String[]> resultTemp = null;
-		DATA=changeFormat(resultTemp);
+		/*ArrayList<String[]> resultTemp = null;
+		DATA=changeFormat(resultTemp);*/
 		return DATA;
 	}
 	
