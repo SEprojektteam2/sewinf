@@ -49,8 +49,8 @@ public class ImportHandlerServlet extends HttpServlet {
 				
 				//Send redirect to client
 				out.println("success");
-				out.flush();
-				resp.sendRedirect("default.agraralphav1.appspot.com");
+				//out.flush();
+				//resp.sendRedirect("default.agraralphav1.appspot.com");
 				
 				//add new thread to insert lines into database. There are only 10 Threads allowed.
 				while(noOfThreads > 9){
