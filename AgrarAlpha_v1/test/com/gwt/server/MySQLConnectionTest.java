@@ -21,8 +21,6 @@ public class MySQLConnectionTest {
 		MySQLConnection connection = new MySQLConnection("173.194.253.240","root","","agrar","agraralphav1:agrar");
 		Connection testConnection = connection.returnConnection();
 		
-			
-	
 	}
 	@Test
 	public void testCloseConnection() {
