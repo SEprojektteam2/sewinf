@@ -34,11 +34,18 @@
 }
 
 .table{
-	
+	height: 600px;
+	width: 600px;
 }
 
 .map{
-	
+	height: 600px;
+	width: 600px;
+}
+
+.tabPanel{
+	border: 1px solid black;
+	padding: 10px;
 }
 
 /** EXAMPLE RULES used by the template application (remove for your app) */
