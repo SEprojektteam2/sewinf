@@ -210,13 +210,13 @@ public class SelectionView extends Composite implements Serializable{
 			//}
 			
 			//an william: muesch no apasse mit dene ufruef wo du bruchsch! inklusive datamanager erstelle und datelle mache!!
-			//bi "world" muen country übergeh werde, wo vo de uswahl gno worde isch
+			//bi "world" muen country Ã¼bergeh werde, wo vo de uswahl gno worde isch
 			//bi "aplle" s produkt und bi "pie" de Produkttyp, und no sjahr
-			//De visualizatonManager muen da erstellt werde und übergeh werde!!
+			//De visualizatonManager muen da erstellt werde und Ã¼bergeh werde!!
 			Runnable onLoadCallback = new Runnable(){	
 				public void run(){
 					DataManager data = new DataManager();
-					VisualizationManager vis= new VisualizationManager(data.createDataTable("India", "Tea", "null"), "India", "Tea", "null", "2010");
+					VisualizationManager vis= new VisualizationManager(data.createDataTable("India", "Tea", "null"), "World", "Tea", "consumption", "2010");
 					main.openCreateView(vis);
 				}
 			};
