@@ -7,6 +7,7 @@ import com.gwt.server.MySQLConnection;
 //import com.google.appengine.api.utils.SystemProperty;
 import com.google.gwt.visualization.client.*;
 import com.google.gwt.visualization.client.AbstractDataTable.ColumnType;
+import com.google.gwt.user.client.Random;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.gwt.client.DataManagerService;
 
@@ -167,7 +168,7 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 		ArrayList<String[]> result = new ArrayList<String[]>();
 			
 			
-		connectToDatabase();
+		/*connectToDatabase();
 			
 		String query="null";
 		String query2="null";
@@ -225,6 +226,25 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 			}
 			DATA.setCell(c, 0, temp[1],temp[1] , null);
 		}*/
+
+			String Temp[] = new String[3];
+			Temp[0] = "2011";
+			Temp[1] = "Switzerland";
+			double number = Random.nextDouble() % 1000.0;
+			Temp[2] = Double.toString(number);
+			result.add(0,Temp);
+			String Temp1[] = new String[3];
+			Temp1[0] = "2011";
+			Temp1[1] = "Switzerland";
+			double number2 = Random.nextDouble() % 1000.0;
+			Temp1[2] = Double.toString(number2);
+			result.add(1,Temp);
+			String Temp2[] = new String[3];
+			Temp2[0] = "2011";
+			Temp2[1] = "Switzerland";
+			double number3 = Random.nextDouble() % 1000.0;
+			Temp2[2] = Double.toString(number3);
+			result.add(2,Temp);
 		
 		return result;
 	}
@@ -236,5 +256,7 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 	}
 		
 }	
+	
+
 	
 
