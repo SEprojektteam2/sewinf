@@ -111,7 +111,7 @@ public class VisualizationManager {
 		GeoMap.Options options = GeoMap.Options.create();
 		options.setWidth("400");
 		options.setHeight("240");
-		options.setColors(959595);
+		//options.setColors(959595);
 		return options;
 	}
 	
