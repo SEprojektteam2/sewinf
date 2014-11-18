@@ -1,4 +1,4 @@
-package com.google.gwt.client;
+package com.gwt.client;
 
 import java.util.ArrayList;
 
@@ -111,6 +111,7 @@ public class VisualizationManager {
 		GeoMap.Options options = GeoMap.Options.create();
 		options.setWidth("400");
 		options.setHeight("240");
+		options.setColors(959595);
 		return options;
 	}
 	
