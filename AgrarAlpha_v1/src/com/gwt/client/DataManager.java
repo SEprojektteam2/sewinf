@@ -59,20 +59,25 @@ public class DataManager implements Serializable{
 		DataTemp.addColumn(ColumnType.NUMBER, "2010");
 		DataTemp.addColumn(ColumnType.NUMBER, "2009");
 		
-		DataTemp.addRows(5);
+		DataTemp.addRows(10);
 		DataTemp.setCell(0, 0, "Switzerland", "Switzerland", null);
 		DataTemp.setCell(1, 0, "Germany", "Germany", null);
 		DataTemp.setCell(2, 0, "Austria", "Austria", null);
 		DataTemp.setCell(3, 0, "Slovakia", "Slovakia", null);
 		DataTemp.setCell(4, 0, "Czech Republic", "Czech Republic", null);
+		DataTemp.setCell(5, 0, "Russia", "Russia", null);
+		DataTemp.setCell(6, 0, "Brazil", "Brazil", null);
+		DataTemp.setCell(7, 0, "Canada", "Canada", null);
+		DataTemp.setCell(8, 0, "Mexico", "Mexico", null);
+		DataTemp.setCell(9, 0, "USA", "USA", null);
 		
 		
 		
 		for(int i=1; i<4; i++)
 		{
-			for(int j=0; j<5; j++)
+			for(int j=0; j<10; j++)
 			{
-				double number = Random.nextDouble() % 1000.0;
+				double number = Math.round((Random.nextDouble() % 1000.0)*1000);
 				DataTemp.setCell(j, i, number, Double.toString(number), null);
 			}
 		}
