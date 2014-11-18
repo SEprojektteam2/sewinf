@@ -49,13 +49,13 @@ public class VisualizationManager {
 		String firstParameter;
 		String secondParameter;
 		
-		if (country.contentEquals("world"))
+		if (country.equalsIgnoreCase("World"))
 		{
-			firstParameter = "Coutry";
+			firstParameter = "Country";
 			secondParameter = product + " " + type;
 			mapAvailable = true;
 		}
-		else if(product.contentEquals("null"))
+		else if(product.equalsIgnoreCase("null"))
 		{
 			firstParameter = "Product";
 			secondParameter = country + " " + type;
