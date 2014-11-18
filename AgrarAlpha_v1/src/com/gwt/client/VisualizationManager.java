@@ -43,9 +43,8 @@ public class VisualizationManager {
 		
 		TableDATA = aTableDATA;
 		
-		setCurYearIndex(year);
 		prepareData();
-		
+		setCurYearIndex(year);
 	}
 	
 	void setParameters(String country, String product, String type)
