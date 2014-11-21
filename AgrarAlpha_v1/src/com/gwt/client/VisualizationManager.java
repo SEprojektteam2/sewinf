@@ -3,7 +3,6 @@ package com.gwt.client;
 import java.util.ArrayList;
 
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.visualization.client.visualizations.*;
@@ -25,9 +24,8 @@ public class VisualizationManager {
 	private String param1;
 	private String param2;
 	
-	private boolean mapAvailable;
-	
 	public ArrayList<Widget> graphs;
+
 	//index 0 = Table --> always created
 	//index 1 = GeoMap --> only if no country was chosen
 	
@@ -35,37 +33,40 @@ public class VisualizationManager {
 	//Constructor
 	public VisualizationManager(DataTable aTableDATA, String country, String product, String type, String year)
 	{
+		if(aTableDATA.equals(null))
+		{
+			graphs.add(0, new Label("DataTable = null"));
+			graphs.add(1, new Label("DataTable = null"));
+			return;
+		}
 		setParameters(country, product, type);
 		
 		TableDATA = aTableDATA;
 		
-		prepareData();
 		setCurYearIndex(year);
+		prepareData();
+		
 	}
-	
 	
 	void setParameters(String country, String product, String type)
 	{
 		String firstParameter;
 		String secondParameter;
 		
-		if (country.equalsIgnoreCase("World"))
+		if (country.contentEquals("world"))
 		{
-			firstParameter = "Country";
+			firstParameter = "Coutry";
 			secondParameter = product + " " + type;
-			mapAvailable = true;
 		}
-		else if(product.equalsIgnoreCase("null"))
+		else if(product.contentEquals("null"))
 		{
 			firstParameter = "Product";
 			secondParameter = country + " " + type;
-			mapAvailable = false;
 		}
 		else
 		{
 			firstParameter = "Type";
 			secondParameter = country + " " + product;
-			mapAvailable = false;
 		}
 
 		setParam1(firstParameter);
@@ -111,7 +112,6 @@ public class VisualizationManager {
 		GeoMap.Options options = GeoMap.Options.create();
 		options.setWidth("400");
 		options.setHeight("240");
-		//options.setColors(959595);
 		return options;
 	}
 	
@@ -119,20 +119,19 @@ public class VisualizationManager {
 	{
 		graphs = new ArrayList<Widget>(2);
 		
-		
 		//table
 		Table table = new Table();
 		table.draw(TableDATA, createTableOptions());
 		graphs.add(0, table);
-		
 	
 		
-		if(mapAvailable)
+		if(param1.equalsIgnoreCase("country"))
 		{
 			//GeoMap
 			GeoMap map = new GeoMap();
 			map.draw(DATA.get(curYearIndex), createMapOptions());
 			graphs.add(1, map);
+			
 		}
 		else
 		{

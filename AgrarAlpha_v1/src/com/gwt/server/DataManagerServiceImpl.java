@@ -2,7 +2,6 @@ package com.gwt.server;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Random;
 
 import com.gwt.server.MySQLConnection;
 //import com.google.appengine.api.utils.SystemProperty;
@@ -34,7 +33,7 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 		connectToDatabase();
 		//limit 1 bei der Abfrage (entfernt die Dupletten)
 		// if you only need a few columns, specify them by name instead of using "*"
-		String query = "SELECT distinct AreaName FROM records WHERE ElementName='Export Quantity' ORDER BY AreaName";
+		String query = "SELECT distinct AreaName FROM records WHERE ElementName='Export Quantity'";
 		
 		// create the java statement
 		Statement st = null;
@@ -71,7 +70,7 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 		connectToDatabase();
 		//limit 1 bei der Abfrage (entfernt die Dupletten)
 		// if you only need a few columns, specify them by name instead of using "*"
-		String query = "SELECT distinct ItemName FROM records WHERE ElementName='Export Quantity' ORDER BY ItemName";
+		String query = "SELECT distinct ItemName FROM records WHERE ElementName='Export Quantity'";
 		
 		// create the java statement
 		Statement st = null;
@@ -168,7 +167,7 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 		ArrayList<String[]> result = new ArrayList<String[]>();
 			
 			
-		/*connectToDatabase();
+		connectToDatabase();
 			
 		String query="null";
 		String query2="null";
@@ -226,30 +225,6 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 			}
 			DATA.setCell(c, 0, temp[1],temp[1] , null);
 		}*/
-			Random random = new Random();
-			String Temp[] = new String[3];
-			Temp[0] = "2011";
-			Temp[1] = "Switzerland";
-			double number = random.nextDouble() % 1000.0;
-			Temp[2] = Double.toString(number);
-			result.add(0,Temp);
-			String Temp1[] = new String[3];
-			Temp1[0] = "2010";
-			Temp1[1] = "Switzerland";
-			double number2 = random.nextDouble() % 1000.0;
-			Temp1[2] = Double.toString(number2);
-			result.add(1,Temp);
-			String Temp2[] = new String[3];
-			Temp2[0] = "2009";
-			Temp2[1] = "Switzerland";
-			double number3 = random.nextDouble() % 1000.0;
-			Temp2[2] = Double.toString(number3);
-			result.add(2,Temp);
-			String Temp3[] = new String[3];
-			Temp3[0] = "3";
-			Temp3[1] = "AreaName";
-			Temp3[2] = "null";
-			result.add(result.size(),Temp);
 		
 		return result;
 	}
@@ -261,7 +236,5 @@ public class DataManagerServiceImpl extends RemoteServiceServlet implements
 	}
 		
 }	
-	
-
 	
 

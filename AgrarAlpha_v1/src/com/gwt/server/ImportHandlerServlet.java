@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 import com.google.appengine.api.ThreadManager;
@@ -49,8 +51,8 @@ public class ImportHandlerServlet extends HttpServlet {
 				
 				//Send redirect to client
 				out.println("success");
-				//out.flush();
-				//resp.sendRedirect("default.agraralphav1.appspot.com");
+				out.flush();
+				resp.sendRedirect("default.agraralphav1.appspot.com");
 				
 				//add new thread to insert lines into database. There are only 10 Threads allowed.
 				while(noOfThreads > 9){
